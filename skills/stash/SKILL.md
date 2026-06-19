@@ -7,6 +7,6 @@ Park a thought so it is not lost, with no ceremony and no decision about what it
 
 This is the place for a thought that arrives mid-grill that you do not want to chase, or one that arrives from outside a session.
 
-The inbox is plain scratch. To clear it, `grill-with-docs` triages it later, routing each scrap to where it belongs.
+The inbox is plain scratch. To clear it, `maintain-docs` triages it, routing each scrap to where it belongs.
 
 If an external capture channel is wired, this skill owns it. Otherwise the inbox is just a folder you write to.

@@ -16,9 +16,9 @@ Sources feed the wiki. Decisions are internal sources. Collaborators browse the 
 
 ## Quickstart
 
-Run `setup-docs` in your project. It will scaffold the project, then bootstrap your existing knowledge through a grill session.
+Run `setup-docs` in your project. It will scaffold the project structure and write the config layer.
 
-If you already have sources or decisions, mention them — otherwise the grill will surface what needs capturing.
+If the project already has sources, code, or undocumented decisions, run `onramp` next — it surveys what exists, triages it, and produces a phased plan for bringing everything into the record.
 
 ## Four zones, split by mutability
 
@@ -47,24 +47,26 @@ docs/
 
 | Skill | Writes | Reads |
 |-------|--------|-------|
-| grill-with-docs | evidence/mdr, wiki (provenance, glossary) | evidence, wiki |
-| wiki-ingest | evidence/findings, wiki (source summaries), sources/ | evidence, wiki |
-| wiki-query | wiki (concepts, traces, registers) | evidence, wiki |
-| audit-code-with-docs | inbox (report) | model code, evidence, wiki |
-| maintain-docs | tidying repairs across evidence + wiki | everything |
-| to-issues | issue tracker, or open-decisions register if none | evidence/mdr |
-| stash | inbox | — |
+| grill-with-docs | `docs/evidence/mdr`, `docs/wiki` (provenance, glossary) | evidence, wiki |
+| wiki-ingest | `docs/evidence/findings`, `docs/wiki` (source summaries), `docs/sources/` | evidence, wiki |
+| wiki-query | `docs/wiki` (concepts, traces, registers) | evidence, wiki |
+| audit-code-with-docs | `docs/inbox` (report) | model code, evidence, wiki |
+| maintain-docs | tidying repairs across evidence + wiki; inbox triage | everything |
+| onramp | `docs/onramp-plan.md` | sources, code, evidence, wiki |
+| to-issues | issue tracker, or open-decisions register if none | evidence (MDRs) |
+| stash | `docs/inbox` | — |
 | handoff | OS temp (outside project) | project state |
 | setup-docs | schema, CLAUDE.md | project structure |
 
 ## The skills
 
 - **setup-docs** : scaffold a project and tune behavior. The one place that owns the config layer. Re-run it to retune.
-- **grill-with-docs** : the spine. Interrogate a plan or topic until decisions settle, then route each one into the project. Also triages the inbox.
+- **onramp** : survey an existing project's sources and code, triage what needs capturing, and produce a phased plan. Run after setup when the project has existing work. Re-runnable when new material appears.
+- **grill-with-docs** : the primary working interface. Interrogate a plan or topic until decisions settle, then route each one into the project.
 - **wiki-ingest** : bring evidence in, a source you read or a finding you ran.
 - **wiki-query** : answer questions over the evidence, and trace a value, finding, or result back through its provenance.
 - **audit-code-with-docs** : check the model's code against its recorded reasoning. The only skill that reads code.
-- **maintain-docs** : a health pass that finds problems and tidies them, in one go, on demand.
+- **maintain-docs** : a health pass that finds problems and tidies them, in one go, on demand. Also triages the inbox.
 - **to-issues** : turn an open item into a tracked issue, and close it when it resolves.
 - **stash** : park a thought into the inbox for later, no ceremony.
 - **handoff** : a short, disposable note so another session can pick up the thread.

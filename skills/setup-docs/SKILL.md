@@ -14,10 +14,10 @@ Explore first. Look at the project before asking anything: is there already a `C
 
 Default everything else silently, and tell the user it is editable: the four justification kinds (measured, derived, calibrated, assumed), the MDR statuses (provisional, accepted, superseded), how the parameter lifecycle is read off rather than set, the wiki page types (provenance, source, trace, concept — see the schema), the log and index formats (`index-format.md` in this folder), where each format doc lives, and the placeholder-aging threshold. Capture starts as a plain inbox folder with no external channel.
 
-Do not build the directory tree up front. Scaffold lazily, so a file appears only when the first real thing needs to live in it.
+Scaffold the full directory tree up front so the user can see the structure immediately. Create the `docs/` root and all zone directories (`docs/inbox/`, `docs/sources/`, `docs/evidence/findings/`, `docs/evidence/mdr/`, `docs/wiki/`) even if they start empty.
 
 When re-run to tune, take the complaint in plain words, find the setting it maps to (check-in cadence and grilling intensity live in `CLAUDE.md`; the rest live in the schema), change it, and say what changed.
 
 Write the schema and the `CLAUDE.md` steering block at the end. Start from `schema.template.md` and `CLAUDE.template.md` in this folder.
 
-Once scaffolding is complete, launch a `grill-with-docs` session to bootstrap the project. Ask the user to describe their model and any sources or decisions they already have, then let the grill surface and route everything that needs capturing.
+If the project has existing sources, code, or undocumented decisions, point the user to `onramp` to survey and plan their ingestion.

@@ -2,7 +2,7 @@
 
 The glossary pins down terms so the project speaks one language, kept inline as terms come up.
 
-File: `wiki/glossary.md`
+File: `docs/wiki/glossary.md`
 
 For each term: the canonical word, and a one-line meaning precise enough that two people could not read it two ways.
 

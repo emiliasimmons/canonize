@@ -22,13 +22,14 @@ The file every skill reads to find its way around. `setup-docs` writes it. Edit 
 
 | Skill | Writes | Reads |
 |-------|--------|-------|
-| grill-with-docs | evidence/mdr, wiki (provenance, glossary) | evidence, wiki |
-| wiki-ingest | evidence/findings, wiki (source summaries), sources/ | evidence, wiki |
-| wiki-query | wiki (concepts, traces, registers) | evidence, wiki |
-| audit-code-with-docs | inbox (report) | model code, evidence, wiki |
-| maintain-docs | tidying repairs across evidence + wiki | everything |
-| to-issues | issue tracker, or open-decisions register if none | evidence/mdr |
-| stash | inbox | — |
+| grill-with-docs | `<root>/evidence/mdr`, `<root>/wiki` (provenance, glossary) | evidence, wiki |
+| wiki-ingest | `<root>/evidence/findings`, `<root>/wiki` (source summaries), `<root>/sources/` | evidence, wiki |
+| wiki-query | `<root>/wiki` (concepts, traces, registers) | evidence, wiki |
+| audit-code-with-docs | `<root>/inbox` (report) | model code, evidence, wiki |
+| maintain-docs | tidying repairs across evidence + wiki; inbox triage | everything |
+| onramp | `<root>/onramp-plan.md` | sources, code, evidence, wiki |
+| to-issues | issue tracker, or open-decisions register if none | evidence (MDRs) |
+| stash | `<root>/inbox` | — |
 | handoff | OS temp (outside project) | project state |
 | setup-docs | schema, CLAUDE.md | project structure |
 
@@ -55,7 +56,7 @@ type: provenance
 | `trace` | end-to-end citation trail | `skills/wiki-query/trace-format.md` |
 | `concept` | synthesis page worth keeping | — (filed by `wiki-query`) |
 
-The glossary (`wiki/glossary.md`) is a single known file and does not need a type field.
+The glossary (`<root>/wiki/glossary.md`) is a single known file and does not need a type field.
 
 **Format docs**
 

@@ -2,7 +2,7 @@
 
 A trace is the trail behind one thing, written out end to end. It is regenerated on demand; keep one only if it is worth keeping.
 
-File (if kept): `wiki/<name>.md`, type `trace`.
+File (if kept): `docs/wiki/<name>.md`, type `trace`.
 
 **Scope, by what is asked:**
 

@@ -2,7 +2,7 @@
 
 An MDR (Model Design Record) is a decision about the model, kept as immutable evidence. It is the modeling analog of an ADR.
 
-File: `evidence/mdr/NNNN-kebab-title.md`, numbered in sequence.
+File: `docs/evidence/mdr/NNNN-kebab-title.md`, numbered in sequence.
 
 **Status**, one of:
 

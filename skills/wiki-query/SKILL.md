@@ -5,7 +5,7 @@ description: Answer a question over the project's evidence, or trace a value, fi
 
 Answer questions over sources and evidence, and follow the trail back when asked. Everything you write here must trace to something in the sources or evidence layer.
 
-Answering. Most questions just get answered in the conversation. When the answer is a real synthesis you would hate to re-derive in six months, offer to keep it as a page in `wiki/` (type `concept`). The user decides. The wiki stays made of things worth keeping.
+Answering. Most questions just get answered in the conversation. When the answer is a real synthesis you would hate to re-derive in six months, offer to keep it as a page in `docs/wiki/` (type `concept`). The user decides. The wiki stays made of things worth keeping.
 
 Tracing. Follow the citation graph end to end, at whatever scope is asked:
 
@@ -19,4 +19,4 @@ You also compile the two registers, both regenerable, never hand-kept: the assum
 
 Format is in this folder: `trace-format.md`.
 
-When you file a page, append a line to `log.md` (`## [date] query | Title`) and update `index.md`.
+When you file a page, append a line to `docs/log.md` (`## [date] query | Title`) and update `docs/index.md`.

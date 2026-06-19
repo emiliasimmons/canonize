@@ -2,7 +2,7 @@
 
 A finding is the result of an analysis you ran. It must describe itself well enough that someone could understand and re-run it without hunting.
 
-File: `evidence/findings/<short-name>.md`
+File: `docs/evidence/findings/<short-name>.md`
 
 **Record:**
 
