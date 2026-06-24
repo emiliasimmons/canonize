@@ -1,6 +1,6 @@
 # docs steering block
 
-`setup-docs` adds this block to the project's `CLAUDE.md`. It is short on purpose. Add to it when a real preference shows up; re-run `setup-docs` and say what is annoying to change it.
+`setup-docs` adds this block to the project's `CLAUDE.md`. Keep it short. Add to it when a real preference shows up; re-run `setup-docs` to change it.
 
 ```markdown
 ## docs

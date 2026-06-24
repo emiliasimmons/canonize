@@ -1,11 +1,7 @@
 ---
-name: onramp
+name: onramp-docs
 description: Survey an existing project's sources and code, triage what needs capturing, and produce a phased plan for bringing it all into the project record. Use after setup-docs when the project has existing sources, code, or undocumented decisions. Re-runnable when new material appears.
 ---
-
-Survey the project, decide what needs capturing, and produce a phased plan that dispatches to the right skills across multiple sessions.
-
-Run this after `setup-docs` when the project has existing work: sources, code, informal notes, or decisions living only in someone's head. Re-run it any time new material appears; it checks what is already captured and plans only the remainder.
 
 **Step 1: Survey.** Look at what exists before asking anything.
 

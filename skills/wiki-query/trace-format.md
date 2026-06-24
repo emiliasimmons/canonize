@@ -4,6 +4,17 @@ A trace is the trail behind one thing, written out end to end. It is regenerated
 
 File (if kept): `docs/wiki/<name>.md`, type `trace`.
 
+**Frontmatter:**
+
+```
+---
+type: trace
+title: <what is being traced>
+description: <one line: the trail in brief>
+timestamp: <ISO 8601, stamped once at creation>
+---
+```
+
 **Scope, by what is asked:**
 
 - a parameter: value -> provenance -> the evidence under it
