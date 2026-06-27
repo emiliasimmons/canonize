@@ -61,9 +61,15 @@ docs/
 | handoff | OS temp (outside project) | project state |
 | setup-docs | schema, CLAUDE.md | project structure |
 
+## Linked repos
+
+A project's `docs/` can live in its own git repo and be shared across multiple working repositories via symlink. The upstream repo (typically the model) owns `docs/` in git; linked repos (calibrations, sensitivity analyses, presentations) symlink to it and gitignore the link. Every repo reads the full evidence trail; each writes findings to its own registered workspace — a subdirectory under `evidence/findings/`.
+
+Run `setup-docs` in linked mode to set this up: it creates the symlink, registers the workspace in the schema, and notes the arrangement in `CLAUDE.md`. Workspaces are listed in the schema so skills can discover them without scanning.
+
 ## The skills
 
-- **setup-docs** : scaffold a project and tune behavior. The one place that owns the config layer. Re-run it to retune.
+- **setup-docs** : scaffold a project and tune behavior. Two modes: new project (full scaffold) and linked (symlink to an existing project's docs, register a workspace). Re-run to retune.
 - **onramp-docs** : survey an existing project's sources and code, triage what needs capturing, and produce a phased plan. Run after setup when the project has existing work. Re-runnable when new material appears.
 - **grill-with-docs** : the primary working interface. Interrogate a plan or topic until decisions settle, then route each one into the project.
 - **wiki-ingest** : bring evidence in, a source you read or a finding you ran.

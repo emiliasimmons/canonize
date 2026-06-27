@@ -13,6 +13,7 @@ What to look for:
 - pages that carry their `type` but have no cross-links (flag for re-linking)
 - wiki claims that no longer trace back to sources or evidence
 - index entries that do not match what actually exists
+- workspace registered in the schema but its directory missing, or a subdirectory under `evidence/findings/` that is not a registered workspace
 - placeholders past the aging threshold
 - provenance still showing a prior when a calibration finding now exists
 

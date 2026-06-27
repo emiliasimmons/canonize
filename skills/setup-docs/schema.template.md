@@ -79,6 +79,28 @@ Producers may add any other keys; consumers preserve unknown keys and never reje
 
 **Bundle version:** declared as `okf_version: "0.1"` in the root `index.md` frontmatter — the one place frontmatter is permitted in an index.
 
+**Workspaces:** registered subdirectories within `evidence/findings/` where linked repos write their findings. Each workspace is a named group — an OKF group within the evidence zone, governed by the same immutability rules. Skills discover workspaces from this list; `setup-docs` registers them at link time.
+
+```
+workspaces: []
+```
+
+When populated:
+
+```
+workspaces:
+  - name: calib-zim
+    description: Zimbabwe calibration
+    repo: poc-doxypep-calib
+  - name: sensitivity-network
+    description: Network parameter sensitivity analysis
+    repo: poc-doxypep-sensitivity
+```
+
+The `repo` field is informational — it records which repository writes to this workspace. Skills use `name` to resolve `evidence/findings/<name>/`.
+
+**Linked repos.** A project's `docs/` can be shared across multiple repositories via symlink. The repo that owns the `docs/` directory in git is the upstream; linked repos symlink `docs/` to the upstream's checkout and gitignore it. Linked repos write findings to their registered workspace and read the full evidence trail. `setup-docs` has a linked mode for this — see the skill.
+
 **GitHub wiki sync:** `[none | enabled]` — when enabled, `<root>/wiki/` is also pushed to `<repo>.wiki.git` for browsing via the GitHub wiki UI.
 
 **Placeholder-aging threshold:** `[e.g. 90 days]`
