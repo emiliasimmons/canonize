@@ -1,26 +1,29 @@
 ---
 name: maintain-docs
-description: Run a health pass over the project, find what is broken and tidy it up in one go. Use when the user asks for a health check, a cleanup, or to fix the project's internal consistency, or when the agent has noticed something clearly broken and the user agrees to a pass. Do NOT use when "maintain" or "clean up" appear in passing about other things.
+description: Run a health pass over the project — find what is broken, fix the mechanical parts, and propose the structural ones. Use when the user asks for a health check, a cleanup, or to fix internal consistency, or when the agent has noticed something clearly broken and the user agrees to a pass. Do NOT use when "maintain" or "clean up" appear in passing about other things.
 ---
 
-What to look for:
+Two modes, because to the user both are "maintaining the docs." Both run on /canon.
 
-- orphans
-- pages that contradict each other
-- claims a newer source has overtaken
-- missing or broken cross-references
-- frontmatter missing or non-conformant (no `type`, or missing the authored core `title`/`description`)
-- pages that carry their `type` but have no cross-links (flag for re-linking)
-- wiki claims that no longer trace back to sources or evidence
-- index entries that do not match what actually exists
-- workspace registered in the schema but its directory missing, or a subdirectory under `evidence/findings/` that is not a registered workspace
-- placeholders past the aging threshold
-- provenance still showing a prior when a calibration finding now exists
+## Mechanical (unilateral)
 
-This half only reads the project. Checks against the model's code belong to `audit-code-with-docs`.
+Fix these in one pass, no permission needed — they are deterministic, not judgement:
 
-Then repair. Prefer supersession: to fix a source summary, write a corrected one and mark the old one superseded; to resolve duplicate decisions, write a new DR that supersedes both. If the user chooses to rewrite an evidence file directly instead, that is their call, but log what changed and why in `docs/log.md` and update `docs/index.md` before making the edit. Either way, confirm repairs with the user first, grouped by related change rather than one prompt at a time.
+- **Broken and non-root-anchored links.** /canon check --links finds them. A moved page's outgoing links survive root-anchoring; only inbound links need repair, and this is that greppable set.
+- **Format conformance.** /canon check --frontmatter flags pages missing `type` or the authored core, or carrying an unregistered type.
+- **Full recompile.** /canon compile regenerates every compiled surface from frontmatter — the full-scan counterpart to the incremental regens /record-doc does per write. Run it to heal any block that drifted.
+- **Orphan and near-duplicate tags.** Flag tags past the aging threshold with too few members, and merge near-duplicates into one canonical form.
+- **Aged placeholders.** Provisional DRs past the placeholder-aging threshold: surface them for the user to revisit.
 
-Anything that needs a real decision or a re-synthesis (a contradiction, lifecycle drift, a missing concept page) you flag and route to `grill-with-docs` or `wiki-query`. You do not resolve it here.
+## Structural curation (proposal + sign-off)
 
-Log all repairs to `docs/log.md` and update `docs/index.md`.
+These change the taxonomy, so argue each one conversationally and get approval before files move:
+
+- **Split a fat topic** or **merge duplicate topics**; **rename** as vocabulary sharpens; **move member pages** between topics.
+- **Rewrite a hub synthesis** — the only thing that resets a hub's staleness counter and stamps the rewrite date. Surface stale hubs (by counter) when you run.
+
+Moves go through the file system, then /canon check --links to repair inbound links and /canon compile to regenerate the affected blocks. New topics, merges, and renames are structural — never unilateral.
+
+## Boundary
+
+This skill only reads the project's own pages. Checks against the model's **code** belong to /audit-code. Anything needing a real decision or re-synthesis (a contradiction, lifecycle drift, a missing concept page) you flag and route to /grill-with-docs or /query-docs; you do not resolve it here. Repairs commit with a `maintain:` message.

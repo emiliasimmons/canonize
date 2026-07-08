@@ -1,0 +1,29 @@
+---
+name: record-doc
+description: The single writing primitive — records one conformant page into the project (a decision, finding, source, concept, or any registered type) and regenerates the surfaces that depend on it. Use when the user says "record-doc", wants a decision/finding/source/note filed, or when another skill needs to write a page. The integration point: name the type, provide the content, record-doc handles conformance.
+---
+
+Record one conformant page into the project and regenerate the surfaces that depend on it, using /canon. One invocation records one page; spine regens and register updates are side effects, not extra docs.
+
+## Steps
+
+1. **Resolve the type.** Read the type registry in `schema.md`. The type must already be registered — record-doc never mints one. If the type is unregistered, stop and say so, and suggest a tag if the content is only "kind of its own thing." Load **only** that type's format doc (recording a finding never pays the token cost of the decision format).
+
+2. **Place and name.** The registry `zone` gives the directory. For a `decision`, take the next id from /canon sequence — never pick a number by hand. For a `source`, `concept`, `provenance`, or `trace`, the home topic gives `wiki/topics/<topic>/`; if its hub does not exist yet, that is a new-topic proposal — stop and get sign-off before scaffolding.
+
+3. **Compose.** Stamp the authored core (`type`, `title`, `description`) and a birth `timestamp` once, add the type-specific keys and typed relations the format doc names, and write every cross-link root-anchored (`/evidence/...`). Any tag not already in the schema's `## Tag vocabulary` is a mint: add it there with a one-line gloss in this same write — unilateral, but never invisible.
+
+4. **Write the page.** Then, for each hub the page joins (its home topic and every tag that names a topic), increment that hub's `staleness` frontmatter by one. Ingest increments and moves on; nothing rewrites a synthesis here.
+
+5. **Regenerate the affected blocks** with /canon compile — never hand-edit compiled content. Recompile the member block of each hub the page joined, the root taxonomy and state, and, on a decision write or supersession, the registers. Authored prose around the blocks is never touched.
+
+6. **Commit** the one logical write with a structured message: `record: DR-0021 <title>`, `ingest: <title>`, `maintain: <what>`. Git is the log — there is no `log.md`.
+
+## Two calling positions
+
+- **Conversational**, with no grill loaded: "record-doc: DR, we fix beta at 0.3 because the Smith fit landed there." You supply the missing conformance; ask only what the type genuinely requires.
+- **Subroutine**, from a workflow skill or a foreign skill system: the external contract is *name the type, provide the content*. The caller never needs format mechanics; you own them.
+
+## Mutability
+
+Prefer append and supersede. A deliberate rewrite is legitimate when the commit logs it and any surface reading the page is recompiled afterward.

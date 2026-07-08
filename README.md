@@ -1,92 +1,86 @@
-# docs
+# canonize
 
-Agent skills that keep a computational modeler thinking rigorously and leave a durable, navigable trail behind every choice.
+Agent skills that keep a computational modeler thinking rigorously and leave a durable, navigable trail behind every choice — on the OKF substrate.
 
-The project docs are the authoritative record of what was decided and why — examined, defended, and kept. The body of reasoned decisions grows as you work, appended to but never rewritten.
+The project's memory is the authoritative record of what was decided and why: examined, defended, and kept. It grows as you work, appended to but never quietly rewritten.
 
 ## The problem
 
 In modeling, the gap between "I made a decision" and "I wrote down why" is where reproducibility dies. Parameter choices, structural assumptions, and the evidence behind them live in someone's head or an orphan notebook. Six months later nobody, including you, can reconstruct why a value is what it is, whether a piece of the model is a considered position or a placeholder, or which parameter set produced a given figure.
 
-The fix is to make capture a non-optional side effect of the verbs you already want to run, never a "remember to update the docs" you will skip.
+The fix is to make capture a cheap, non-optional side effect of the verbs you already want to run, and to keep the reading surfaces current automatically so opening the project always feels like a wiki, never a flat pile of files.
 
 ## The one-sentence model
 
 Sources feed the wiki. Decisions are internal sources. Collaborators browse the wiki, not the sources.
 
-## Quickstart
+## Two ideas worth holding onto
 
-Run `setup-docs` in your project. It will scaffold the project structure and write the config layer.
+**Improve progressive disclosure; penalize maintenance over reading.** Anything derivable from frontmatter is *compiled* by the `canon` script, never hand-maintained; anything authored is prose a human or agent deliberately wrote. A routine write costs a bounded handful of cheap operations and never re-reads the corpus into context.
 
-If the project already has sources, code, or undocumented decisions, run `onramp-docs` next — it surveys what exists, triages it, and produces a phased plan for bringing everything into the record.
+**The parameter lifecycle is read, not set.** There is no freeze button. A value with only sources behind it reads as a prior; once a calibration finding exists, it reads as calibrated. The stage is a property the wiki compiles, not a state you advance.
 
-## Zones, split by mutability
+## Layout
 
-- **sources** : actual source files (PDFs, CSVs). Immutable, human-managed.
-- **evidence** : immutable, append-only, citeable. What you observed and what you decided — findings and decisions (DRs). You append, re-run, or supersede; you never quietly rewrite.
-- **wiki** : mutable, synthesized. What you currently believe, built on top of sources and evidence. Source summaries, parameter provenance, concept pages, traces. It grows incrementally as you work; in principle you could rebuild it from sources and evidence.
-- **views** : generated. Interactive HTML compiled from the conformant corpus by `build-view` — a knowledge graph or bespoke dashboards. A projection, never ground truth.
-
-## One OKF bundle
-
-The whole thing is a single OKF bundle (Open Knowledge Format v0.1): markdown with YAML frontmatter, a non-empty `type` on every page. That keeps it readable without tooling, diffable in git, and compilable into the interactive views in `docs/views/`. Capture is born-conformant — the writing skills emit the authored core (`type`, `title`, `description`, a birth `timestamp`) on every page they create — so there is nothing to "remember to update."
-
-## Structure
-
-Everything lives under a single root (default `docs/`) so the skills do not pollute the project directory.
+Storage is zone-first; navigation is topic-first. One OKF bundle rooted at `docs/` (by default):
 
 ```
 docs/
-  sources/             actual source files (PDFs, CSVs)
+  sources/                    raw files (PDFs, CSVs). Flat. Storage, not knowledge.
   evidence/
-    findings/          analysis results
-    decisions/         model design records (DR-NNNN)
-  wiki/                flat — source summaries, provenance, concepts, traces, registers, glossary
-  views/               compiled interactive views (build-view output)
-  index.md             root index; carries okf_version; maps across zones, grouped by type
-  log.md               append-only changelog
+    findings/                 analysis results, flat, tagged
+    decisions/                model design records (DR-NNNN), flat, tagged
+  wiki/
+    topics/
+      <topic>.md              the topic hub (authored synthesis + compiled member list)
+      <topic>/                member source summaries and concepts
+    glossary.md
+    assumptions.md            compiled register (accepted decisions)
+    open-decisions.md         compiled register (provisional decisions)
+  views/                      compiled interactive views, pull-only
+  index.md                    root orientation page
+  schema.md                   central config + type registry
 ```
 
-## What writes where
+## The disclosure spine
 
-| Skill | Writes | Reads |
-|-------|--------|-------|
-| grill-with-docs | `docs/evidence/decisions`, `docs/wiki` (provenance, glossary) | evidence, wiki |
-| wiki-ingest | `docs/evidence/findings`, `docs/wiki` (source summaries), `docs/sources/` | evidence, wiki |
-| wiki-query | `docs/wiki` (concepts, traces, registers) | evidence, wiki |
-| build-view | `docs/views/` (compiled HTML + data) | the conformant corpus |
-| audit-code-with-docs | nothing — reports in-session | model code, evidence, wiki |
-| maintain-docs | tidying repairs across evidence + wiki | everything |
-| onramp-docs | `docs/onramp-plan.md` | sources, code, evidence, wiki |
-| handoff | OS temp (outside project) | project state |
-| setup-docs | schema, CLAUDE.md | project structure |
+Three navigation surfaces, kept current automatically so a reader never confronts a flat 150-item list:
 
-## Linked repos
+1. **Root orientation page** (`index.md`) — authored preamble like a wiki landing page, then a compiled taxonomy (every topic and tag with counts) and a compiled project-state block (open decisions, stale hubs, recent writes).
+2. **Topic hubs** (`wiki/topics/<name>.md`) — the primary browsing surface: an authored synthesis on top, a compiled member list below cutting across zones.
+3. **Leaf pages** — source summaries, findings, decisions, concepts.
 
-A project's `docs/` can live in its own git repo and be shared across multiple working repositories via symlink. The upstream repo (typically the model) owns `docs/` in git; linked repos (calibrations, sensitivity analyses, presentations) symlink to it and gitignore the link. Every repo reads the full evidence trail; each writes findings to its own registered workspace — a subdirectory under `evidence/findings/`.
+Everything cross-cutting is a tag; a page tagged with a topic's name appears in that hub. All links are root-anchored (`/evidence/...`) so moving a page never breaks its outgoing links.
 
-Run `setup-docs` in linked mode to set this up: it creates the symlink, registers the workspace in the schema, and notes the arrangement in `CLAUDE.md`. Workspaces are listed in the schema so skills can discover them without scanning.
+## One OKF bundle
+
+The whole thing is a single [OKF](references/knowledge-catalog/okf/SPEC.md) bundle: markdown with YAML frontmatter, a non-empty `type` on every page. Readable without tooling, diffable in git. Types are a **registry** in `schema.md`, not a fixed table — adding a type is a registry row plus a format doc, which is also the integration contract for other skill systems: name the type, provide the content, `record-doc` handles conformance.
 
 ## The skills
 
-- **setup-docs** : scaffold a project and tune behavior. Two modes: new project (full scaffold) and linked (symlink to an existing project's docs, register a workspace). Re-run to retune.
-- **onramp-docs** : survey an existing project's sources and code, triage what needs capturing, and produce a phased plan. Run after setup when the project has existing work. Re-runnable when new material appears.
-- **grill-with-docs** : the primary working interface. Interrogate a plan or topic until decisions settle, then route each one into the project.
-- **wiki-ingest** : bring evidence in, a source you read or a finding you ran.
-- **wiki-query** : answer questions over the evidence, and trace a value, finding, or result back through its provenance.
-- **build-view** : compile the conformant corpus into interactive views — a knowledge graph or bespoke dashboards.
-- **audit-code-with-docs** : check the model's code against its recorded reasoning. The only skill that reads code; it reports in-session and writes nothing.
-- **maintain-docs** : a health pass that finds problems and tidies them, in one go, on demand.
-- **handoff** : a short, disposable note so another session can pick up the thread.
+Seven core skills, two pull tools, and one script.
 
-## Two ideas worth holding onto
+- **setup-canon** — bootstrap, adopt, or link a project; writes the schema, type registry, and root scaffold. Adopting is setup plus one batch ingest.
+- **ingest-source** — bring sources and findings in; owns placement (topic + tags); batch mode skims all before placing any. Delegates every write.
+- **query-docs** — answer questions and trace values live through the typed relations; read-only; offers to keep an expensive synthesis.
+- **record-doc** — the single writing primitive and the integration point; the only skill that writes pages.
+- **grill-with-docs** — the primary working interface: interrogate a plan until decisions settle, then route each through `record-doc`.
+- **maintain-docs** — a health pass: mechanical repairs unilaterally, structural curation by proposal and sign-off.
+- **audit-code** — autonomous, read-only check of the model's code against the evidence trail; reports a discrepancy table with recommendations.
+- **build-docs-view** — pull-only: compile an interactive knowledge graph or a bespoke dashboard.
+- **export-bundles** — stub: materialize a shareable topic bundle (design banked, not built).
+- **canon** — the deterministic layer (compile, check, sequence). Stdlib only, ships with the skills; a project never needs it.
 
-The wiki is built incrementally as you work, not regenerated from scratch. Sources and evidence are ground truth; the wiki is a compiled view over them. Given the same questions, you would get similar answers, so the wiki is not precious in the way evidence is. In practice it grows page by page as decisions settle and syntheses accumulate. Because the whole thing is a git repo, history is the time machine for the mutable wiki, so making provenance docs mutable costs nothing in auditability.
+## Git is the log
 
-The parameter lifecycle is read, not set. There is no freeze button. A value with only sources behind it reads as a prior; once a calibration finding exists, it reads as calibrated. The stage is a property the wiki compiles, not a state you advance.
+One commit per logical write with a structured message (`ingest: <title>`, `record: DR-0021 <title>`, `maintain: <what>`). There is no `log.md`.
+
+## Linked repos
+
+A project's `docs/` can be shared across repositories via symlink: the upstream repo owns it in git, linked repos symlink and gitignore it. Each linked repo writes findings to its own registered workspace under `evidence/findings/`. Run `setup-canon` in linked mode to set this up.
 
 ## Built on
 
-- [Matt Pocock's engineering skills](https://github.com/mattpocock/skills) : decisions get written down as they crystallize; documentation is never its own skill
-- [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) : a persistent knowledge base that pre-compiles synthesis instead of re-deriving it every time
-- [OKF (Open Knowledge Format)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) : the page format — markdown with YAML frontmatter, a non-empty `type` on every page
+- [Matt Pocock's engineering skills](https://github.com/mattpocock/skills) — decisions written down as they crystallize; documentation is never its own skill.
+- [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — a persistent knowledge base that pre-compiles synthesis instead of re-deriving it every time.
+- [OKF (Open Knowledge Format)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) — the page format: markdown with YAML frontmatter, a non-empty `type` on every page.
