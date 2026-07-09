@@ -3,11 +3,9 @@ name: audit-code
 description: Check the model's code against its recorded reasoning and report the discrepancies. Use when the user wants to verify the code matches the project record, before a release or review, or when checking for drift between code and decisions or provenance. Read-only by default. Do NOT use to check whether the model fits the data — that is a finding, recorded with ingest-source.
 ---
 
-Walk the relation graph into the model's code. Read it, never run it. Run **autonomously and strictly read-only**: detect discrepancies, end in a report plus a prompt. Resolution is whatever the user says next; there is no separate fix mode.
+Walk the relation graph into the model's code. Read it, never run it. Detect discrepancies, present a report. Resolution is whatever the user says next.
 
 ## Walk
-
-The typed relations make this a graph traversal:
 
 - **Provenance → code.** Each `provenance` page's `bears_on` names a code site (path and symbol). Follow it; check the value in code matches. A frozen or calibrated value disagreeing with code is a discrepancy.
 - **Decision → code.** Read each `decision` against the code it governs. Is the thing a DR calls a random screen still a random screen? Has a structural change slipped in with no DR superseded?

@@ -4,7 +4,7 @@ description: Bootstrap a canon project, adopt an existing one, link a repo to a 
 disable-model-invocation: true
 ---
 
-This skill writes the config layer: `schema.md`, the root orientation page, the directory scaffold, and the `## docs` steering block. No other skill writes them. Start from `schema.template.md` and `steering.template.md` in this folder, and load /canon for the layout and the script.
+Writes `schema.md`, the root orientation page, the directory scaffold, and the `## docs` steering block. Start from `schema.template.md` and `steering.template.md` in this skill's directory, and load /canon for the layout and the script.
 
 Three modes: **new project**, **adopt**, **linked**.
 
@@ -18,7 +18,7 @@ Explore first. Look before asking: existing agent instructions file, git remote,
 
 Use `schema.template.md` defaults for everything else and say they are editable.
 
-Scaffold the tree up front so the structure is visible immediately:
+Scaffold the tree up front:
 
 - directories: `<root>/sources/`, `<root>/evidence/findings/`, `<root>/evidence/decisions/`, `<root>/wiki/topics/`, `<root>/views/`
 - `<root>/index.md`: `okf_version: "0.1"` frontmatter (its only frontmatter), a short authored preamble written like a wiki landing page, then the two compiled markers `<!-- compiled:taxonomy -->…<!-- /compiled:taxonomy -->` and `<!-- compiled:state -->…<!-- /compiled:state -->`, then links to the registers and glossary
@@ -33,7 +33,7 @@ If the project already has sources, code, or undocumented decisions, go to adopt
 
 ## Adopt
 
-Adoption is setup plus one batch ingest — no separate onramp machinery, no plan file. Run the new-project scaffold first, then hand the existing sources to /ingest-source in batch mode. That first batch doubles as initial taxonomy construction: with no topics yet, the placement plan's clusters *are* the proposed topic set. The user approves the taxonomy and placements once, and it executes. Undocumented decisions surfaced while reading are proposed as DRs through /record-doc.
+Adoption is setup plus one batch ingest. Run the new-project scaffold first, then hand the existing sources to /ingest-source in batch mode. That first batch doubles as initial taxonomy construction: with no topics yet, the placement plan's clusters *are* the proposed topic set. The user approves the taxonomy and placements once, and it executes. Undocumented decisions surfaced while reading are proposed as DRs through /record-doc.
 
 ## Linked
 

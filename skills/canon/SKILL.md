@@ -1,19 +1,17 @@
 ---
 name: canon
-description: How the canon system works and how to run its script — compile, check, sequence. Load when writing pages, compiling surfaces, checking conformance, or reasoning about the project's structure. Other skills load this instead of carrying script mechanics.
+description: How the canon system works and how to run its script — compile, check, sequence. Load when writing pages, compiling surfaces, checking conformance, or reasoning about the project's structure.
 ---
 
 # Canon
 
-The system's knowledge layer: how a project is laid out, and how to drive the deterministic `canon` script. Other skills load this rather than restating any of it.
-
-## How the project is laid out
+## Docs structure
 
 Three zones, three postures:
 
-- `sources/` — raw files (PDFs, CSVs). Flat. Immutable, human-managed.
+- `sources/` — raw files (PDFs, documents, spreadsheets, slide decks, etc). Immutable, human-managed.
 - `evidence/findings/` and `evidence/decisions/` — flat within type, tagged. Append-only. Decisions carry sequential `DR-NNNN` ids.
-- `wiki/topics/` — topic hubs and their member pages. Mutable, built incrementally.
+- `wiki/topics/` — topic hubs and their member pages, built incrementally.
 
 Storage is zone-first; navigation is topic-first. `wiki/topics/<name>.md` is the hub; `wiki/topics/<name>/` holds its members. A page joins a hub **by tag**: its home topic (the directory it lives in) is always also a tag, and every other topic it is tagged with lists it in that hub too. Evidence has no single-parent constraint — a decision appears in every hub it is tagged to.
 
@@ -27,15 +25,15 @@ Evidence is append-only: append, supersede, or re-run — never quietly rewrite.
 
 ## Running the script
 
-Stdlib Python, shipped beside the skills. Resolve it from the calling skill's own directory and run it against the project's substrate root (default `docs`, set in `schema.md`):
+Run `canon.py` in this skill's directory against the project's substrate root (default `docs`, set in `schema.md`):
 
 ```
-python3 <canonize-skills>/canon/canon.py --root <substrate-root> <subcommand>
+python3 <canon-skill-path>/canon.py --root <substrate-root> <subcommand>
 ```
 
 ### compile — regenerate compiled blocks from frontmatter
 
-Incremental (named blocks) in the routine write path; full-corpus (`all`, the default) as a maintenance repair. Idempotent — recompiling an unchanged corpus writes nothing.
+Incremental (named blocks) in the routine write path; full-corpus (`all`, the default) as a maintenance repair. Recompiling an unchanged corpus writes nothing.
 
 ```
 --block members --page <hub> …    one or more hubs a written page joined
@@ -64,16 +62,16 @@ Non-zero exit on a blocking issue.
 
 Never pick a DR number by hand.
 
-## When to record a decision
+## When to Recommend Recording a Decision
 
-Only when one of these holds:
+Never record a decision autonomously. When a choice meets any of the criteria below, pause and recommend recording it, then wait for the user's go-ahead.
 
-1. **Hard to reverse** — the choice constrains future work.
-2. **Surprising without context** — a future reader will wonder why.
-3. **A real trade-off** — genuine alternatives existed and one was chosen for specific reasons.
+- **Non-obvious justification:** An independent reviewer would need to ask *why* this path was taken. It is not self-evident or forced.
+- **No precedent:** The choice cannot be justified by literature, established frameworks, or existing project sources.
+- **No field consensus:** The approach is not an accepted standard in the relevant scientific or computational community.
 
-A provisional decision is legitimate when the choice is forced but the rationale is thin; it lands in the open-decisions register automatically. Writing the page itself is /record-doc's job.
+When recommending, state the decision, why it qualifies, and a suggested one-line rationale, so the user can approve or edit rather than compose from scratch.
 
-## What needs sign-off
+> **Rule of thumb:** If a peer would need an explicit justification to replicate or validate the logic, recommend recording it.
 
-Structural taxonomy changes — a new topic, a new type, a split, merge, or rename — are proposed and wait for approval. Tag minting is unilateral but registered in the same write.
+A provisional decision is legitimate when the choice is forced and the rationale is thin.
