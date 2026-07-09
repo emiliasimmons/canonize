@@ -85,19 +85,6 @@ Structural links live in frontmatter keys so every compiled surface and `audit-c
 
 All links are root-anchored from the bundle root (`/decisions/DR-0007.md`), never file-relative. A moved page's outgoing links then survive untouched; only inbound links need repair, which `canon check` finds mechanically. Citations backing a page's claims go under a `# Citations` heading at the bottom, numbered.
 
-## Which skill writes where
-
-| skill | writes | reads |
-|-------|--------|-------|
-| record-doc | every page; spine appends, block regens, register updates via `canon` | registry, format docs |
-| ingest-source | delegates all writes to record-doc | taxonomy block, corpus |
-| query-docs | nothing (offers record-doc for keepers) | findings, decisions, topics |
-| grill-with-docs | delegates to record-doc | domain knowledge |
-| maintain-docs | repairs, moves, block regens via `canon` | everything |
-| audit-code | nothing directly (diffs + record-doc) | model code, findings, decisions, topics |
-| build-docs-view | `views/` | the conformant corpus |
-| setup-canon | `schema.md`, root page, directories | project structure |
-
 ## Justification kinds
 
 measured, derived, calibrated, assumed. Lifecycle (prior, calibrated) is read off the evidence, never set by hand: a value with only sources reads as a prior; once a calibration finding exists it reads as calibrated. There is no freeze step.

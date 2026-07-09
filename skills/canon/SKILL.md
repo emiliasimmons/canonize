@@ -1,11 +1,13 @@
 ---
 name: canon
-description: How the canon system works and how to run its script — compile, check, sequence. Load when writing pages, compiling surfaces, checking conformance, or reasoning about the project's structure.
+description: Project orientation and script usage. Load when writing pages, compiling surfaces, checking conformance, reasoning about the project's structure, or when asked about the docs.
 ---
 
 # Canon
 
-## Docs structure
+Read `index.md` at the project's substrate root (default `docs`) for orientation: the authored preamble, compiled taxonomy, and state blocks. Read `schema.md` for the type registry and tag vocabulary only if necessary.
+
+## Docs layout
 
 Four zones, three postures:
 
@@ -16,52 +18,13 @@ Four zones, three postures:
 
 Storage is zone-first; navigation is topic-first. `topics/<name>.md` is the hub; `topics/<name>/` holds its members. A page joins a hub **by tag**: its home topic (the directory it lives in) is always also a tag, and every other topic it is tagged with lists it in that hub too. Evidence has no single-parent constraint — a decision appears in every hub it is tagged to.
 
-`index.md` is the root orientation page: an authored preamble, then the compiled taxonomy and state blocks. `schema.md` holds the type registry (what each type is, where it lives, which surfaces it feeds) and the tag vocabulary.
-
-## What is compiled vs authored
+## Compiled blocks
 
 Every navigation surface is compiled from frontmatter and never hand-edited: the taxonomy and state blocks on `index.md`, the member list on each hub, the assumptions and open-decisions registers, the per-zone indexes. Compiled blocks are delimited by `<!-- compiled:NAME -->` … `<!-- /compiled:NAME -->`; only the inner content is regenerated, never the authored prose around it. All links are root-anchored from the bundle root (`/decisions/...`, `/findings/...`).
 
 Evidence is append-only: append, supersede, or re-run — never quietly rewrite.
 
-## Running the script
-
-Run `canon.py` in this skill's directory against the project's substrate root (default `docs`, set in `schema.md`):
-
-```
-python3 <canon-skill-path>/canon.py --root <substrate-root> <subcommand>
-```
-
-### compile — regenerate compiled blocks from frontmatter
-
-Incremental (named blocks) in the routine write path; full-corpus (`all`, the default) as a maintenance repair. Recompiling an unchanged corpus writes nothing.
-
-```
---block members --page <hub> …    one or more hubs a written page joined
---block taxonomy --block state    the root, after any page write
---block registers                 after any decision write or supersession
-                                   (no flag = full recompile of everything)
-```
-
-One call carries several `--block`/`--page` flags.
-
-### check — conformance and link integrity
-
-```
---frontmatter    every page has a type; authored core present; type is registered
---links          root-anchored links resolve; file-relative .md links flagged
-                 (no flag = both)
-```
-
-Non-zero exit on a blocking issue.
-
-### sequence — hand out the next id
-
-```
---kind decision    prints the next DR-NNNN atomically
-```
-
-Never pick a DR number by hand.
+For script usage (compile, check, sequence), read `canon_usage.md` in this skill's directory.
 
 ## When to Recommend Recording a Decision
 
