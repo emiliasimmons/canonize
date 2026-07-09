@@ -20,10 +20,10 @@ Use `schema.template.md` defaults for everything else and say they are editable.
 
 Scaffold the tree up front:
 
-- directories: `<root>/sources/`, `<root>/evidence/findings/`, `<root>/evidence/decisions/`, `<root>/wiki/topics/`, `<root>/views/`
-- `<root>/index.md`: `okf_version: "0.1"` frontmatter (its only frontmatter), a short authored preamble written like a wiki landing page, then the two compiled markers `<!-- compiled:taxonomy -->…<!-- /compiled:taxonomy -->` and `<!-- compiled:state -->…<!-- /compiled:state -->`, then links to the registers and glossary
-- `<root>/wiki/glossary.md`, `<root>/wiki/assumptions.md`, `<root>/wiki/open-decisions.md` — the registers scaffolded with a `<!-- compiled:register -->` block each (formats in `record-doc/`)
-- `<root>/schema.md` from the template, with the chosen values filled and an empty `## Tag vocabulary` table
+- directories: `docs/sources/`, `docs/evidence/findings/`, `docs/evidence/decisions/`, `docs/wiki/topics/`, `docs/views/`
+- `docs/index.md`: `okf_version: "0.1"` frontmatter (its only frontmatter), a short authored preamble written like a wiki landing page, then the two compiled markers `<!-- compiled:taxonomy -->…<!-- /compiled:taxonomy -->` and `<!-- compiled:state -->…<!-- /compiled:state -->`, then links to the registers and glossary
+- `docs/wiki/glossary.md`, `docs/wiki/assumptions.md`, `docs/wiki/open-decisions.md` — the registers scaffolded with a `<!-- compiled:register -->` block each (formats in `record-doc/`)
+- `docs/schema.md` from the template, with the chosen values filled and an empty `## Tag vocabulary` table
 
 Offer the **stock-optional** types (`provenance`, `trace`); for each the user accepts, copy its row from the template's stock-optionals table into the live `## Type registry`. Custom types are not minted here unless asked — that is a brief /grilling session on what the type captures, then a registry row plus a format doc from the template, with sign-off.
 

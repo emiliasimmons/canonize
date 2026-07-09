@@ -16,3 +16,4 @@ Every sentence in a skill either constrains behavior or provides information the
 - Narrating the absence of things that were never in play ("there is no `log.md`", "there is no separate fix mode")
 - Redundant qualifiers shown by operations elsewhere in the skill set ("deterministic", "mutable" when compile/append rules already cover it)
 - Value statements about the system's design ("the wiki stays made of things worth keeping") — the agent follows instructions, not aspirations
+- `<root>` as a path prefix in skill prose — use `docs/` directly; `<root>` belongs only in templates that `setup-canon` fills at scaffold time

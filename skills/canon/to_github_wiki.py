@@ -266,7 +266,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--out",
         default=None,
-        help="output directory (default: <root>/views/github-wiki)",
+        help="output directory (default: docs/views/github-wiki)",
     )
     return parser
 

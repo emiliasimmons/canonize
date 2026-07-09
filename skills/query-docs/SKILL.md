@@ -7,7 +7,7 @@ Answer over the corpus; compile nothing. Every claim traces to sources or eviden
 
 ## Answering
 
-Most questions get answered in the conversation. Read the taxonomy block at the top of `<root>/index.md` to find the relevant topic hubs, then the hub syntheses and their members. When an answer is a real synthesis you would hate to re-derive in six months, offer to keep it — on acceptance, /record-doc files a `concept` page into the right topic.
+Most questions get answered in the conversation. Read the taxonomy block at the top of `docs/index.md` to find the relevant topic hubs, then the hub syntheses and their members. When an answer is a real synthesis you would hate to re-derive in six months, offer to keep it — on acceptance, /record-doc files a `concept` page into the right topic.
 
 ## Tracing
 

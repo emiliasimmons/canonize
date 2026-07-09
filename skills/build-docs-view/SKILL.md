@@ -3,14 +3,14 @@ name: build-docs-view
 description: Compile the conformant corpus into an interactive HTML view on request — a knowledge graph of the evidence trail, or a bespoke dashboard. Use when the user wants to build, compile, or refresh a view of the project. Optional and pull-only; nothing in normal operation depends on a view existing.
 ---
 
-Views live under `<root>/views/<name>/` and are always generated, never hand-edited.
+Views live under `docs/views/<name>/` and are always generated, never hand-edited.
 
 ## Recipe 1 — knowledge graph
 
 `graph.py` in this skill's directory walks the corpus, resolves root-anchored links into edges, and groups nodes into compound clusters by topic — a page's home topic, or the topic its tags name, else its zone. Run it against the substrate root:
 
 ```
-python3 <build-docs-view-skill-path>/graph.py --root <root> --out <root>/views/graph/index.html
+python3 <build-docs-view-skill-path>/graph.py --root docs --out docs/views/graph/index.html
 ```
 
 One HTML page: a Cytoscape graph, topic clusters, nodes colored by type, click a node for its rendered body, plus search and a type filter. Rendering needs a network connection. A page becomes a node only if it has a `type` (index and log files drop out); root-anchored `.md` links and the typed relations (`derived_from`, `bears_on`, `supersedes`) become edges.
@@ -25,9 +25,9 @@ Write the D3/Leaflet/etc. page each time. Run a /grilling session until these se
 - **the storage target** (`store`) — pages / csv / json / inline table / …
 - **the output** — the file(s)
 
-Record the settled design in a manifest at `<root>/views/<name>/manifest.md` (format: `manifest.md`); the manifest's Codebook is the only extraction instruction.
+Record the settled design in a manifest at `docs/views/<name>/manifest.md` (format: `manifest.md`); the manifest's Codebook is the only extraction instruction.
 
-Then build the pipeline. A bespoke view is always a script — or a set of scripts — running extraction → data → visualization, and it must be re-runnable on its own, without an agent. Write the extractor(s) into `<root>/views/<name>/`: they read the corpus (frontmatter, or values parsed out of bodies) and emit the data file the page renders.
+Then build the pipeline. A bespoke view is always a script — or a set of scripts — running extraction → data → visualization, and it must be re-runnable on its own, without an agent. Write the extractor(s) into `docs/views/<name>/`: they read the corpus (frontmatter, or values parsed out of bodies) and emit the data file the page renders.
 
 The one exception is when the extraction itself needs the agent — sentiment analysis, or any judgement an LLM has to make. Do not wire that through chat; recommend an agent SDK for that step, so the pipeline stays re-runnable outside a conversation.
 
