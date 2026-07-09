@@ -18,23 +18,21 @@ The project memory is a single OKF bundle rooted at `<root>/`. Storage is zone-f
 
 ```
 <root>/
-  sources/                       raw source files (PDFs, CSVs). Flat. Storage, not knowledge.
-  evidence/
-    findings/                    flat, tagged
-    decisions/                   flat, sequential DR-NNNN, tagged
-  wiki/
-    topics/
-      <topic>.md                 the topic hub (type: topic), sibling of its directory
-      <topic>/                   member pages: source summaries, concepts
-    glossary.md
-    assumptions.md               compiled register (accepted decisions)
-    open-decisions.md            compiled register (provisional decisions)
+  sources/                       raw source files (PDFs, CSVs). Storage, not knowledge.
+  findings/                      analysis results, tagged
+  decisions/                     flat, sequential DR-NNNN, tagged
+  topics/
+    <topic>.md                   the topic hub (type: topic), sibling of its directory
+    <topic>/                     member pages: source summaries, concepts
   views/                         compiled HTML, pull-only
+  glossary.md
+  assumptions.md                 compiled register (accepted decisions)
+  open-decisions.md              compiled register (provisional decisions)
   index.md                       root orientation page (okf_version its only frontmatter)
   schema.md                      this file
 ```
 
-Three zones, three mutabilities: `sources/` immutable and human-managed; `evidence/` immutable (append, re-run, or supersede — never quietly rewrite); `wiki/` mutable, built incrementally. Topics are coarse — target 8 to 15 for a 150-source project. A page has exactly one primary parent (its directory); everything cross-cutting is a tag.
+Four zones, three postures: `sources/` immutable and human-managed; `findings/` and `decisions/` append-only (append, re-run, or supersede — never quietly rewrite); `topics/` mutable, built incrementally. Topics are coarse — target 8 to 15 for a 150-source project. A page has exactly one primary parent (its directory); everything cross-cutting is a tag.
 
 ## Frontmatter
 
@@ -53,13 +51,13 @@ Adding a type is a registry row plus a format doc, nothing else. The `surfaces` 
 
 | type | zone | mutability | format | surfaces |
 |------|------|-----------|--------|----------|
-| `decision` | evidence/decisions | append-only | record-doc/formats/decision.md | hub, register, taxonomy |
-| `finding` | evidence/findings | append-only | record-doc/formats/finding.md | hub, taxonomy |
-| `source` | wiki/topics | mutable | record-doc/formats/source.md | hub, taxonomy |
-| `concept` | wiki/topics | mutable | record-doc/formats/concept.md | hub, taxonomy |
-| `topic` | wiki/topics | mutable | record-doc/formats/topic.md | |
-| `register` | wiki | mutable | record-doc/formats/register.md | |
-| `glossary` | wiki | mutable | record-doc/formats/glossary.md | |
+| `decision` | decisions | append-only | record-doc/formats/decision.md | hub, register, taxonomy |
+| `finding` | findings | append-only | record-doc/formats/finding.md | hub, taxonomy |
+| `source` | topics | mutable | record-doc/formats/source.md | hub, taxonomy |
+| `concept` | topics | mutable | record-doc/formats/concept.md | hub, taxonomy |
+| `topic` | topics | mutable | record-doc/formats/topic.md | |
+| `register` | | mutable | record-doc/formats/register.md | |
+| `glossary` | | mutable | record-doc/formats/glossary.md | |
 
 Format paths are relative to the canonize skills directory.
 
@@ -67,8 +65,8 @@ Format paths are relative to the canonize skills directory.
 
 | type | zone | mutability | format | surfaces |
 |------|------|-----------|--------|----------|
-| `provenance` | wiki/topics | mutable | record-doc/formats/provenance.md | hub |
-| `trace` | wiki/topics | mutable | record-doc/formats/trace.md | hub |
+| `provenance` | topics | mutable | record-doc/formats/provenance.md | hub |
+| `trace` | topics | mutable | record-doc/formats/trace.md | hub |
 
 `mutability` is a default posture, not a law; `record-doc` owns the deliberate-rewrite escape hatch. `provenance` and `trace` are optional: provenance for why-a-parameter-has-its-value pages, trace only for frozen snapshots (live traces are ephemeral `query-docs` output).
 
@@ -85,7 +83,7 @@ Structural links live in frontmatter keys so every compiled surface and `audit-c
 
 ## Links and citations
 
-All links are root-anchored from the bundle root (`/evidence/decisions/DR-0007.md`), never file-relative. A moved page's outgoing links then survive untouched; only inbound links need repair, which `canon check` finds mechanically. Citations backing a page's claims go under a `# Citations` heading at the bottom, numbered.
+All links are root-anchored from the bundle root (`/decisions/DR-0007.md`), never file-relative. A moved page's outgoing links then survive untouched; only inbound links need repair, which `canon check` finds mechanically. Citations backing a page's claims go under a `# Citations` heading at the bottom, numbered.
 
 ## Which skill writes where
 
@@ -93,10 +91,10 @@ All links are root-anchored from the bundle root (`/evidence/decisions/DR-0007.m
 |-------|--------|-------|
 | record-doc | every page; spine appends, block regens, register updates via `canon` | registry, format docs |
 | ingest-source | delegates all writes to record-doc | taxonomy block, corpus |
-| query-docs | nothing (offers record-doc for keepers) | evidence, wiki |
+| query-docs | nothing (offers record-doc for keepers) | findings, decisions, topics |
 | grill-with-docs | delegates to record-doc | domain knowledge |
 | maintain-docs | repairs, moves, block regens via `canon` | everything |
-| audit-code | nothing directly (diffs + record-doc) | model code, evidence, wiki |
+| audit-code | nothing directly (diffs + record-doc) | model code, findings, decisions, topics |
 | build-docs-view | `views/` | the conformant corpus |
 | setup-canon | `schema.md`, root page, directories | project structure |
 
@@ -110,7 +108,7 @@ provisional, accepted, superseded by DR-NNNN.
 
 ## Workspaces
 
-Registered subdirectories under `evidence/findings/` where linked repos write their findings, each governed by the same immutability rules. Skills resolve `evidence/findings/<name>/` from this list; `setup-canon` registers them in linked mode.
+Registered subdirectories under `findings/` where linked repos write their findings, each governed by the same append-only rules. Skills resolve `findings/<name>/` from this list; `setup-canon` registers them in linked mode.
 
 ```
 workspaces: []

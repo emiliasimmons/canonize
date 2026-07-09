@@ -2,7 +2,7 @@
 
 Stock-optional type. A trace is the trail behind one thing, written out end to end. Live traces are ephemeral `query-docs` output; store one only on an explicit freeze — a date-stamped snapshot you want to keep.
 
-File (only when frozen): `wiki/topics/<topic>/<name>.md`, type `trace`.
+File (only when frozen): `topics/<topic>/<name>.md`, type `trace`.
 
 **Frontmatter:**
 

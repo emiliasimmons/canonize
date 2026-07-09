@@ -7,19 +7,20 @@ description: How the canon system works and how to run its script — compile, c
 
 ## Docs structure
 
-Three zones, three postures:
+Four zones, three postures:
 
 - `sources/` — raw files (PDFs, documents, spreadsheets, slide decks, etc). Immutable, human-managed.
-- `evidence/findings/` and `evidence/decisions/` — flat within type, tagged. Append-only. Decisions carry sequential `DR-NNNN` ids.
-- `wiki/topics/` — topic hubs and their member pages, built incrementally.
+- `findings/` — analysis results, tagged. Append-only. Optionally subdivided by workspace.
+- `decisions/` — design records (`DR-NNNN`), flat, tagged. Append-only.
+- `topics/` — topic hubs and their member pages, built incrementally.
 
-Storage is zone-first; navigation is topic-first. `wiki/topics/<name>.md` is the hub; `wiki/topics/<name>/` holds its members. A page joins a hub **by tag**: its home topic (the directory it lives in) is always also a tag, and every other topic it is tagged with lists it in that hub too. Evidence has no single-parent constraint — a decision appears in every hub it is tagged to.
+Storage is zone-first; navigation is topic-first. `topics/<name>.md` is the hub; `topics/<name>/` holds its members. A page joins a hub **by tag**: its home topic (the directory it lives in) is always also a tag, and every other topic it is tagged with lists it in that hub too. Evidence has no single-parent constraint — a decision appears in every hub it is tagged to.
 
 `index.md` is the root orientation page: an authored preamble, then the compiled taxonomy and state blocks. `schema.md` holds the type registry (what each type is, where it lives, which surfaces it feeds) and the tag vocabulary.
 
 ## What is compiled vs authored
 
-Every navigation surface is compiled from frontmatter and never hand-edited: the taxonomy and state blocks on `index.md`, the member list on each hub, the assumptions and open-decisions registers, the per-zone indexes. Compiled blocks are delimited by `<!-- compiled:NAME -->` … `<!-- /compiled:NAME -->`; only the inner content is regenerated, never the authored prose around it. All links are root-anchored from the bundle root (`/evidence/...`).
+Every navigation surface is compiled from frontmatter and never hand-edited: the taxonomy and state blocks on `index.md`, the member list on each hub, the assumptions and open-decisions registers, the per-zone indexes. Compiled blocks are delimited by `<!-- compiled:NAME -->` … `<!-- /compiled:NAME -->`; only the inner content is regenerated, never the authored prose around it. All links are root-anchored from the bundle root (`/decisions/...`, `/findings/...`).
 
 Evidence is append-only: append, supersede, or re-run — never quietly rewrite.
 

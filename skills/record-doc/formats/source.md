@@ -1,8 +1,8 @@
 # Source format
 
-A source is something external you read: a paper, a dataset. The raw file lives flat in `sources/`; the summary — the knowledge object — lives under the topic it belongs to. Nobody browses PDFs; the summary is what the project knows.
+A source is something external you read: a paper, a dataset. The raw file lives in `sources/`; the summary — the knowledge object — lives under the topic it belongs to. Nobody browses PDFs; the summary is what the project knows.
 
-File: `wiki/topics/<topic>/<short-name>.md`, type `source`.
+File: `topics/<topic>/<short-name>.md`, type `source`.
 
 **Frontmatter:**
 

@@ -27,17 +27,15 @@ Storage is zone-first; navigation is topic-first. One OKF bundle rooted at `docs
 ```
 docs/
   sources/                    raw files (PDFs, CSVs). Flat. Storage, not knowledge.
-  evidence/
-    findings/                 analysis results, flat, tagged
-    decisions/                model design records (DR-NNNN), flat, tagged
-  wiki/
-    topics/
-      <topic>.md              the topic hub (authored synthesis + compiled member list)
-      <topic>/                member source summaries and concepts
-    glossary.md
-    assumptions.md            compiled register (accepted decisions)
-    open-decisions.md         compiled register (provisional decisions)
+  findings/                   analysis results, tagged
+  decisions/                  model design records (DR-NNNN), flat, tagged
+  topics/
+    <topic>.md                the topic hub (authored synthesis + compiled member list)
+    <topic>/                  member source summaries and concepts
   views/                      compiled interactive views, pull-only
+  glossary.md
+  assumptions.md              compiled register (accepted decisions)
+  open-decisions.md           compiled register (provisional decisions)
   index.md                    root orientation page
   schema.md                   central config + type registry
 ```
@@ -47,10 +45,10 @@ docs/
 Three navigation surfaces, kept current automatically so a reader never confronts a flat 150-item list:
 
 1. **Root orientation page** (`index.md`) — authored preamble like a wiki landing page, then a compiled taxonomy (every topic and tag with counts) and a compiled project-state block (open decisions, stale hubs, recent writes).
-2. **Topic hubs** (`wiki/topics/<name>.md`) — the primary browsing surface: an authored synthesis on top, a compiled member list below cutting across zones.
+2. **Topic hubs** (`topics/<name>.md`) — the primary browsing surface: an authored synthesis on top, a compiled member list below cutting across zones.
 3. **Leaf pages** — source summaries, findings, decisions, concepts.
 
-Everything cross-cutting is a tag; a page tagged with a topic's name appears in that hub. All links are root-anchored (`/evidence/...`) so moving a page never breaks its outgoing links.
+Everything cross-cutting is a tag; a page tagged with a topic's name appears in that hub. All links are root-anchored (`/decisions/...`, `/findings/...`) so moving a page never breaks its outgoing links.
 
 ## One OKF bundle
 
@@ -77,7 +75,7 @@ One commit per logical write with a structured message (`ingest: <title>`, `reco
 
 ## Linked repos
 
-A project's `docs/` can be shared across repositories via symlink: the upstream repo owns it in git, linked repos symlink and gitignore it. Each linked repo writes findings to its own registered workspace under `evidence/findings/`. Run `setup-canon` in linked mode to set this up.
+A project's `docs/` can be shared across repositories via symlink: the upstream repo owns it in git, linked repos symlink and gitignore it. Each linked repo writes findings to its own registered workspace under `findings/`. Run `setup-canon` in linked mode to set this up.
 
 ## Built on
 

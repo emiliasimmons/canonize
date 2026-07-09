@@ -2,7 +2,7 @@
 
 The glossary pins down terms so the project speaks one language, kept inline as terms come up.
 
-File: `wiki/glossary.md`, type `glossary`. A single conformant page.
+File: `glossary.md` at the bundle root, type `glossary`. A single conformant page.
 
 **Frontmatter:**
 

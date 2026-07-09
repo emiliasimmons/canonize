@@ -20,9 +20,9 @@ Use `schema.template.md` defaults for everything else and say they are editable.
 
 Scaffold the tree up front:
 
-- directories: `docs/sources/`, `docs/evidence/findings/`, `docs/evidence/decisions/`, `docs/wiki/topics/`, `docs/views/`
+- directories: `docs/sources/`, `docs/findings/`, `docs/decisions/`, `docs/topics/`, `docs/views/`
 - `docs/index.md`: `okf_version: "0.1"` frontmatter (its only frontmatter), a short authored preamble written like a wiki landing page, then the two compiled markers `<!-- compiled:taxonomy -->…<!-- /compiled:taxonomy -->` and `<!-- compiled:state -->…<!-- /compiled:state -->`, then links to the registers and glossary
-- `docs/wiki/glossary.md`, `docs/wiki/assumptions.md`, `docs/wiki/open-decisions.md` — the registers scaffolded with a `<!-- compiled:register -->` block each (formats in `record-doc/`)
+- `docs/glossary.md`, `docs/assumptions.md`, `docs/open-decisions.md` — the registers scaffolded with a `<!-- compiled:register -->` block each (formats in `record-doc/`)
 - `docs/schema.md` from the template, with the chosen values filled and an empty `## Tag vocabulary` table
 
 Offer the **stock-optional** types (`provenance`, `trace`); for each the user accepts, copy its row from the template's stock-optionals table into the live `## Type registry`. Custom types are not minted here unless asked — that is a brief /grilling session on what the type captures, then a registry row plus a format doc from the template, with sign-off.
@@ -42,14 +42,14 @@ Use when this repo should share another project's evidence trail ("link to ../po
 Explore first: does the upstream `docs/` exist with a `schema.md`; does this repo already have a `docs/` or symlink; what other skill systems or plugins are loaded. Then ask, one at a time:
 
 1. **Upstream project** — the upstream root (e.g. `../poc-doxypep`); the symlink targets `<upstream>/docs/`.
-2. **Workspace name** — a short slug from the repo name; becomes `evidence/findings/<name>/`.
+2. **Workspace name** — a short slug from the repo name; becomes `findings/<name>/`.
 3. **Workspace description** — one line.
 
 Then:
 
 1. Symlink `docs/ -> <upstream>/docs/`.
 2. Add `docs` to `.gitignore` (the upstream tracks it).
-3. Create `docs/evidence/findings/<workspace>/`.
+3. Create `docs/findings/<workspace>/`.
 4. Register the workspace in the shared `schema.md` `workspaces` list (name, description, repo).
 5. Write the steering block noting the shared path, the workspace, and any other loaded skill systems.
 6. Commit `setup: link workspace <workspace>`.

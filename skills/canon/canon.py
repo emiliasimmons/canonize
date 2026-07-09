@@ -287,7 +287,7 @@ def _group_by_type(pages: list[Page]) -> dict[str, list[Page]]:
 
 def compile_members(hub: Page, pages: list[Page], schema: Schema) -> str:
     topic = _topic_name(hub.relpath)
-    topic_dir = f"wiki/topics/{topic}"
+    topic_dir = f"topics/{topic}"
     members = _members_of(topic, topic_dir, pages, schema)
     if not members:
         return "_No members yet._"
@@ -301,7 +301,7 @@ def compile_members(hub: Page, pages: list[Page], schema: Schema) -> str:
 
 
 def _topic_name(relpath: str) -> str:
-    # wiki/topics/<name>.md -> <name>
+    # topics/<name>.md -> <name>
     return Path(relpath).stem
 
 
@@ -312,7 +312,7 @@ def compile_taxonomy(pages: list[Page], schema: Schema) -> str:
         out.append("_No topics yet._")
     for hub in hubs:
         topic = _topic_name(hub.relpath)
-        count = len(_members_of(topic, f"wiki/topics/{topic}", pages, schema))
+        count = len(_members_of(topic, f"topics/{topic}", pages, schema))
         desc = f" — {hub.description}" if hub.description else ""
         out.append(f"- [{hub.title}]({hub.link}){desc} · {count} members")
     out += ["", "### Tags", ""]
@@ -434,7 +434,7 @@ _DR_RE = re.compile(r"DR-(\d+)")
 
 def next_sequence(root: Path) -> str:
     highest = 0
-    decisions = root / "evidence" / "decisions"
+    decisions = root / "decisions"
     if decisions.is_dir():
         for p in decisions.glob("DR-*.md"):
             m = _DR_RE.match(p.name)
@@ -490,13 +490,13 @@ def cmd_compile(root: Path, blocks: set[str], page_args: list[str]) -> int:
             ("open-decisions.md", "provisional", "Open decisions"),
         ]
         for fname, status, _label in specs:
-            path = root / "wiki" / fname
+            path = root / fname
             if not path.exists():
                 continue
             text = path.read_text(encoding="utf-8")
             text = replace_block(text, "register", compile_register(pages, status))
             if _write_if_changed(path, text):
-                changed.append(f"wiki/{fname}")
+                changed.append(fname)
 
     def do_indexes():
         zones = {row["zone"] for row in schema.registry.values() if row["zone"]}
@@ -506,7 +506,7 @@ def cmd_compile(root: Path, blocks: set[str], page_args: list[str]) -> int:
             if not zone_dir.is_dir():
                 continue
             direct = [p for p in pages if str(Path(p.relpath).parent) == zone]
-            if not direct and zone != "wiki/topics":
+            if not direct and zone != "topics":
                 continue
             heading = zone.replace("/", " / ")
             idx = zone_dir / "index.md"

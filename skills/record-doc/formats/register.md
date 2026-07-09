@@ -2,7 +2,7 @@
 
 A register is a wiki page whose body is fully compiled from decision frontmatter. Two exist: assumptions (from `accepted` DRs) and open-decisions (from `provisional` DRs). They are never stale — `record-doc` recompiles the affected register in the same commit as every decision write or supersession, so the root state block is always truthful.
 
-Files: `wiki/assumptions.md` and `wiki/open-decisions.md`, type `register`.
+Files: `assumptions.md` and `open-decisions.md` at the bundle root, type `register`.
 
 **Frontmatter:**
 

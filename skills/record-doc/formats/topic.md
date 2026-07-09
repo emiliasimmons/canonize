@@ -1,8 +1,8 @@
 # Topic format
 
-A topic hub is the level-2 browsing surface: the primary reading path into everything the project knows about one theme. It is a sibling page of its member directory (`wiki/topics/seasonality.md` describes `wiki/topics/seasonality/`), the pattern OKF's own appendix models, so it carries frontmatter where an index file could not.
+A topic hub is the level-2 browsing surface: the primary reading path into everything the project knows about one theme. It is a sibling page of its member directory (`topics/seasonality.md` describes `topics/seasonality/`), the pattern OKF's own appendix models, so it carries frontmatter where an index file could not.
 
-File: `wiki/topics/<topic>.md`, type `topic`. Its directory `wiki/topics/<topic>/` holds the member source summaries and concepts.
+File: `topics/<topic>.md`, type `topic`. Its directory `topics/<topic>/` holds the member source summaries and concepts.
 
 **Frontmatter:**
 
@@ -29,6 +29,6 @@ tags: [<cross-cutting themes the hub itself belongs to>]
 <!-- /compiled:members -->
 ```
 
-`canon compile --block members --page wiki/topics/<topic>.md` fills it: the topic's source summaries and concepts (physically in its directory) plus every finding and decision tagged to it, listed by root-anchored link, grouped by type. Never hand-edit inside the markers.
+`canon compile --block members --page topics/<topic>.md` fills it: the topic's source summaries and concepts (physically in its directory) plus every finding and decision tagged to it, listed by root-anchored link, grouped by type. Never hand-edit inside the markers.
 
 New topics are always a proposal, never unilateral — minting one is a structural change requiring sign-off. Target 8 to 15 topics for a 150-source project; a page has one primary parent and everything else is a tag.

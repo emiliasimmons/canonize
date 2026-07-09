@@ -43,9 +43,9 @@ def _node_id(relpath: str) -> str:
 def _cluster_of(page: canon.Page, topics: set[str]) -> tuple[str, str] | None:
     """Return (cluster_id, cluster_label) for compound grouping, or None."""
     parts = page.relpath.split("/")
-    if page.relpath.startswith("wiki/topics/"):
-        # a hub (wiki/topics/<t>.md) or a member (wiki/topics/<t>/...)
-        name = parts[2][:-3] if len(parts) == 3 else parts[2]
+    if page.relpath.startswith("topics/"):
+        # a hub (topics/<t>.md) or a member (topics/<t>/...)
+        name = parts[1][:-3] if len(parts) == 2 else parts[1]
         return f"topic:{name}", name
     for tag in page.tags:
         if tag in topics:

@@ -2,7 +2,7 @@
 """to_github_wiki — flatten the wiki into a GitHub Wiki snapshot.
 
 A one-way publish. GitHub Wiki has a single flat page namespace, so the nested
-wiki (`wiki/topics/<name>/<page>.md`) is flattened by path (`A/B.md -> A-B.md`),
+wiki (`topics/<name>/<page>.md`) is flattened by path (`A/B.md -> A-B.md`),
 root-anchored links are rewritten to the flat slugs, frontmatter is stripped,
 and tag pages plus a `_Sidebar.md` are generated. The output is a disposable
 snapshot pushed to the repo's `<repo>.wiki.git` remote by hand.
@@ -104,8 +104,8 @@ _LINK_RE = re.compile(r"(!?)\[([^\]]*)\]\(([^)\s]+)\)")
 def rewrite_links(body: str, link_map: dict[str, str]) -> str:
     """Rewrite root-anchored .md links to flat slugs; unwrap the unresolvable.
 
-    link_map keys are root-anchored source paths ("/wiki/topics/x.md"); values
-    are destination slugs ("wiki-topics-x", no extension).
+    link_map keys are root-anchored source paths ("/topics/x.md"); values
+    are destination slugs ("topics-x", no extension).
     """
 
     def repl(m: re.Match) -> str:
@@ -197,17 +197,17 @@ def build_sidebar(pages, link_map, tag_slugs) -> str:
         lines.append("")
 
     registers = [
-        ("Assumptions", "/wiki/assumptions.md"),
-        ("Open decisions", "/wiki/open-decisions.md"),
-        ("Glossary", "/wiki/glossary.md"),
+        ("Assumptions", "/assumptions.md"),
+        ("Open decisions", "/open-decisions.md"),
+        ("Glossary", "/glossary.md"),
     ]
     reg = [f"- [{label}]({link_map[key]})" for label, key in registers if key in link_map]
     if reg:
         lines += ["### Registers", ""] + reg + [""]
 
     evidence = [
-        ("Findings", "/evidence/findings/index.md"),
-        ("Decisions", "/evidence/decisions/index.md"),
+        ("Findings", "/findings/index.md"),
+        ("Decisions", "/decisions/index.md"),
     ]
     ev = [f"- [{label}]({link_map[key]})" for label, key in evidence if key in link_map]
     if ev:

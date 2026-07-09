@@ -23,7 +23,7 @@ Add these bullets and list any other loaded skill systems or plugins with their 
 ## docs
 
 - Shared docs: symlinked from <upstream project path>
-- Workspace: <name> (findings write to evidence/findings/<name>/)
+- Workspace: <name> (findings write to findings/<name>/)
 - [Other plugin]: <one-line purpose>
 - Check-in: [confirm each write | batch and show periodically]
 - Grilling: relentless by default. One question at a time, each with a recommended answer.

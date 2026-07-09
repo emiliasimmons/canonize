@@ -4,7 +4,7 @@ A finding is the result of an analysis you ran. It carries enough detail to unde
 
 This is the shared contract between canonize and any external tool that produces findings (e.g. a calibration plugin's experiment-close step): name the type, provide the content, `record-doc` handles conformance.
 
-File: `evidence/findings/<short-name>.md`, or `evidence/findings/<workspace>/<short-name>.md` when the project uses workspaces (the current repo's workspace is named in the `## docs` steering block). The filename mirrors the analysis artifact it came from. Type `finding`.
+File: `findings/<short-name>.md`, or `findings/<workspace>/<short-name>.md` when the project uses workspaces (the current repo's workspace is named in the `## docs` steering block). The filename mirrors the analysis artifact it came from. Type `finding`.
 
 **Frontmatter:**
 

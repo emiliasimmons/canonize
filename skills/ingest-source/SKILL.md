@@ -22,7 +22,7 @@ Read the taxonomy block, judge where a thing belongs, and hand the content and p
 
 ## A finding you ran
 
-Write it through /record-doc (type `finding`): the question, the method as a pointer to the re-runnable artifact (never paste the script), the inputs that mattered, and the result with its diagnostic. When the project has registered workspaces (in `schema.md`), the current repo's workspace — named in the `## docs` steering block — routes it to `evidence/findings/<workspace>/`. 
+Write it through /record-doc (type `finding`): the question, the method as a pointer to the re-runnable artifact (never paste the script), the inputs that mattered, and the result with its diagnostic. When the project has registered workspaces (in `schema.md`), the current repo's workspace — named in the `## docs` steering block — routes it to `findings/<workspace>/`. 
 
 ## Staleness
 

@@ -7,9 +7,9 @@ description: Records one conformant page into the project (a decision, finding, 
 
 1. **Resolve the type.** Read the type registry in `schema.md`. The type must already be registered — record-doc never mints one. If the type is unregistered, stop and say so, and suggest a tag if the content is only "kind of its own thing." Load **only** that type's format doc (recording a finding never pays the token cost of the decision format).
 
-2. **Place and name.** The registry `zone` gives the directory. For a `decision`, take the next id from /canon sequence — never pick a number by hand. For a `source`, `concept`, `provenance`, or `trace`, the home topic gives `wiki/topics/<topic>/`; if its hub does not exist yet, that is a new-topic proposal — stop and get sign-off before scaffolding.
+2. **Place and name.** The registry `zone` gives the directory. For a `decision`, take the next id from /canon sequence — never pick a number by hand. For a `source`, `concept`, `provenance`, or `trace`, the home topic gives `topics/<topic>/`; if its hub does not exist yet, that is a new-topic proposal — stop and get sign-off before scaffolding.
 
-3. **Compose.** Stamp the authored core (`type`, `title`, `description`) and a birth `timestamp` once, add the type-specific keys and typed relations the format doc names, and write every cross-link root-anchored (`/evidence/...`). Any tag not already in the schema's `## Tag vocabulary` is a mint: add it there with a one-line gloss in this same write — unilateral, but never invisible.
+3. **Compose.** Stamp the authored core (`type`, `title`, `description`) and a birth `timestamp` once, add the type-specific keys and typed relations the format doc names, and write every cross-link root-anchored (`/decisions/...`, `/findings/...`). Any tag not already in the schema's `## Tag vocabulary` is a mint: add it there with a one-line gloss in this same write — unilateral, but never invisible.
 
 4. **Write the page.** Then, for each hub the page joins (its home topic and every tag that names a topic), increment that hub's `staleness` frontmatter by one. Ingest increments and moves on.
 
