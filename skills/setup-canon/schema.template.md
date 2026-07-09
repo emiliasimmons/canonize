@@ -53,22 +53,22 @@ Adding a type is a registry row plus a format doc, nothing else. The `surfaces` 
 
 | type | zone | mutability | format | surfaces |
 |------|------|-----------|--------|----------|
-| `decision` | evidence/decisions | append-only | record-doc/decision-format.md | hub, register, taxonomy |
-| `finding` | evidence/findings | append-only | record-doc/finding-format.md | hub, taxonomy |
-| `source` | wiki/topics | mutable | record-doc/source-format.md | hub, taxonomy |
-| `concept` | wiki/topics | mutable | record-doc/concept-format.md | hub, taxonomy |
-| `topic` | wiki/topics | mutable | record-doc/topic-format.md | |
-| `register` | wiki | mutable | record-doc/register-format.md | |
-| `glossary` | wiki | mutable | record-doc/glossary-format.md | |
+| `decision` | evidence/decisions | append-only | record-doc/formats/decision.md | hub, register, taxonomy |
+| `finding` | evidence/findings | append-only | record-doc/formats/finding.md | hub, taxonomy |
+| `source` | wiki/topics | mutable | record-doc/formats/source.md | hub, taxonomy |
+| `concept` | wiki/topics | mutable | record-doc/formats/concept.md | hub, taxonomy |
+| `topic` | wiki/topics | mutable | record-doc/formats/topic.md | |
+| `register` | wiki | mutable | record-doc/formats/register.md | |
+| `glossary` | wiki | mutable | record-doc/formats/glossary.md | |
 
-Format paths are relative to the canonize skills directory (all format docs ship beside `record-doc`).
+Format paths are relative to the canonize skills directory.
 
 **Stock optionals** — offered by `setup-canon`, format docs pre-written, added as rows when adopted:
 
 | type | zone | mutability | format | surfaces |
 |------|------|-----------|--------|----------|
-| `provenance` | wiki/topics | mutable | record-doc/provenance-format.md | hub |
-| `trace` | wiki/topics | mutable | record-doc/trace-format.md | hub |
+| `provenance` | wiki/topics | mutable | record-doc/formats/provenance.md | hub |
+| `trace` | wiki/topics | mutable | record-doc/formats/trace.md | hub |
 
 `mutability` is a default posture, not a law; `record-doc` owns the deliberate-rewrite escape hatch. `provenance` and `trace` are optional: provenance for why-a-parameter-has-its-value pages, trace only for frozen snapshots (live traces are ephemeral `query-docs` output).
 

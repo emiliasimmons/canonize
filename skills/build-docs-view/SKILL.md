@@ -27,7 +27,7 @@ A custom dashboard over data you extract. There is no reusable dashboard engine;
 - **the storage target** (`store`) — pages / csv / json / inline table / …
 - **the output** — the file(s)
 
-Record the settled design in a manifest at `<root>/views/<name>/manifest.md` (format: `manifest-format.md`); the manifest's Codebook is the only extraction instruction.
+Record the settled design in a manifest at `<root>/views/<name>/manifest.md` (format: `manifest.md`); the manifest's Codebook is the only extraction instruction.
 
 Then build the pipeline. A bespoke view is always a script — or a set of scripts — running extraction → data → visualization, and it must be re-runnable on its own, without an agent. Write the extractor(s) into `<root>/views/<name>/`: they read the corpus (frontmatter, or values parsed out of bodies) and emit the data file the page renders.
 
