@@ -5,7 +5,9 @@ description: Project orientation and script usage. Load when writing pages, comp
 
 # Canon
 
-Read `index.md` at the project's substrate root (default `docs`) for orientation: the authored preamble, compiled taxonomy, and state blocks. Read `schema.md` for the type registry and tag vocabulary only if necessary.
+Read `index.md` at the project's substrate root (default `docs`) for orientation: the authored preamble, compiled taxonomy, and state blocks.
+Read `glossary.md` for project vocabulary.
+Read `schema.md` for the type registry and tag vocabulary only if necessary.
 
 ## Docs layout
 
@@ -25,6 +27,28 @@ Every navigation surface is compiled from frontmatter and never hand-edited: the
 Evidence is append-only: append, supersede, or re-run — never quietly rewrite.
 
 For script usage (compile, check, sequence), read `canon_usage.md` in this skill's directory.
+
+## Glossary
+
+The glossary is for defining terms used within the code, data, or results of the project.
+
+### When to flag
+
+A term qualifies when all three hold:
+
+- It recurs in the model's code, parameters, or results — not a one-off mention.
+- Its meaning is not self-evident to a domain practitioner reading the project.
+- It is specific to this project's model, not a general scientific or programming concept.
+
+### Conflicts and ambiguity
+
+When a term conflicts with an existing glossary entry, call it out: "The glossary defines X as Y, but here you seem to mean Z — which is it?"
+
+When a term is vague or overloaded, propose a precise canonical form before it enters the vocabulary: "You're saying 'rate' — the transmission rate or the recovery rate?"
+
+### Writing
+
+On resolution, edit `glossary.md` directly. One or two sentences defining what the term IS in this project. Write the entry when it settles, don't batch.
 
 ## When to Recommend Recording a Decision
 

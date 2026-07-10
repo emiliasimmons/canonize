@@ -3,7 +3,7 @@ name: maintain-docs
 description: Run a health pass over the project — find what is broken, fix the mechanical parts, and propose the structural ones. Use when the user asks for a health check, a cleanup, or to fix internal consistency, or when the agent has noticed something clearly broken and the user agrees to a pass. Do NOT use when "maintain" or "clean up" appear in passing about other things.
 ---
 
-Two modes, both run on /canon.
+Orient with /canon. Both modes use the /canon script.
 
 ## Mechanical (unilateral)
 
