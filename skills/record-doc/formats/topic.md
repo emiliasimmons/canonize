@@ -1,6 +1,6 @@
 # Topic format
 
-A topic hub is the level-2 browsing surface: the primary reading path into everything the project knows about one theme. It is a sibling page of its member directory (`topics/seasonality.md` describes `topics/seasonality/`), the pattern OKF's own appendix models, so it carries frontmatter where an index file could not.
+A topic hub is the level-2 browsing surface: the primary reading path into everything the project knows about one theme. It is a sibling page of its member directory (`topics/seasonality.md` describes `topics/seasonality/`), so it carries frontmatter where an index file could not.
 
 File: `topics/<topic>.md`, type `topic`. Its directory `topics/<topic>/` holds the member source summaries and concepts.
 

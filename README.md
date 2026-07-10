@@ -1,6 +1,6 @@
 # canonize
 
-Agent skills that keep a computational modeler thinking rigorously and leave a durable, navigable trail behind every choice — on the OKF substrate.
+Agent skills that keep a computational modeler thinking rigorously and leave a durable, navigable trail behind every choice.
 
 The project's memory is the authoritative record of what was decided and why: examined, defended, and kept. It grows as you work, appended to but never quietly rewritten.
 
@@ -22,7 +22,7 @@ Sources feed the wiki. Decisions are internal sources. Collaborators browse the 
 
 ## Layout
 
-Storage is zone-first; navigation is topic-first. One OKF bundle rooted at `docs/` (by default):
+Storage is zone-first; navigation is topic-first. Rooted at `docs/` (by default):
 
 ```
 docs/
@@ -50,9 +50,9 @@ Three navigation surfaces, kept current automatically so a reader never confront
 
 Everything cross-cutting is a tag; a page tagged with a topic's name appears in that hub. All links are root-anchored (`/decisions/...`, `/findings/...`) so moving a page never breaks its outgoing links.
 
-## One OKF bundle
+## Page format
 
-The whole thing is a single [OKF](references/knowledge-catalog/okf/SPEC.md) bundle: markdown with YAML frontmatter, a non-empty `type` on every page. Readable without tooling, diffable in git. Types are a **registry** in `schema.md`, not a fixed table — adding a type is a registry row plus a format doc, which is also the integration contract for other skill systems: name the type, provide the content, `record-doc` handles conformance.
+Every page is markdown with YAML frontmatter and a non-empty `type`. Readable without tooling, diffable in git. Types are a **registry** in `schema.md`, not a fixed table — adding a type is a registry row plus a format doc, which is also the integration contract for other skill systems: name the type, provide the content, `record-doc` handles conformance.
 
 ## The skills
 
@@ -82,3 +82,4 @@ A project's `docs/` can be shared across repositories via symlink: the upstream 
 - [Matt Pocock's engineering skills](https://github.com/mattpocock/skills) — decisions written down as they crystallize; documentation is never its own skill.
 - [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — a persistent knowledge base that pre-compiles synthesis instead of re-deriving it every time.
 - [OKF (Open Knowledge Format)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) — the page format: markdown with YAML frontmatter, a non-empty `type` on every page.
+

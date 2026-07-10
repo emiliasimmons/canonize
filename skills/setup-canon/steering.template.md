@@ -7,7 +7,7 @@
 ```markdown
 ## docs
 
-- Substrate root: <root> (single OKF bundle; canon compiles the spine)
+- Substrate root: <root> (canon compiles the spine)
 - Check-in: [confirm each write | batch and show periodically]
 - Grilling: relentless by default. One question at a time, each with a recommended answer.
 - Structural changes (new topic, new type, split/merge/rename) need sign-off; tag minting is unilateral but registered in the same write.

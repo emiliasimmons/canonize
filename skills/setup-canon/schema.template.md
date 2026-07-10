@@ -2,7 +2,7 @@
 
 The central config. `setup-canon` writes it; `canon` reads it. Edit a value here, or re-run `setup-canon`, to change a default. Bracketed values are set at setup.
 
-The project memory is a single OKF bundle rooted at `<root>/`. Storage is zone-first; navigation is topic-first. Every page is markdown with YAML frontmatter; the zone directories are ordinary OKF groups, not separate bundles.
+The project memory is rooted at `<root>/`. Storage is zone-first; navigation is topic-first. Every page is markdown with YAML frontmatter.
 
 ## Settings
 
@@ -28,7 +28,7 @@ The project memory is a single OKF bundle rooted at `<root>/`. Storage is zone-f
   glossary.md
   assumptions.md                 compiled register (accepted decisions)
   open-decisions.md              compiled register (provisional decisions)
-  index.md                       root orientation page (okf_version its only frontmatter)
+  index.md                       root orientation page
   schema.md                      this file
 ```
 
@@ -112,4 +112,4 @@ workspaces:
 
 ## Bundle version
 
-Declared as `okf_version: "0.1"` in the root `index.md` frontmatter — the one place frontmatter is permitted in an index.
+`index.md` frontmatter carries only `okf_version: "0.1"`.
