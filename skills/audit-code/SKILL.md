@@ -7,7 +7,7 @@ Walk the relation graph into the model's code. Read it, never run it. Resolution
 
 ## Walk
 
-- **Provenance → code.** Each `provenance` page's `bears_on` names a code site (path and symbol). Follow it; check the value in code matches. A frozen or calibrated value disagreeing with code is a discrepancy.
+- **Provenance → code.** Each `provenance` page's `code_site` names a code location (path and symbol). Follow it; check the value in code matches. A frozen or calibrated value disagreeing with code is a discrepancy.
 - **Decision → code.** Read each `decision` against the code it governs. Is the thing a DR calls a random screen still a random screen? Has a structural change slipped in with no DR superseded?
 - **Code → docs.** Scan the other way: a hardcoded value with no provenance pointing at it, or code behavior no DR covers, is an orphan worth flagging.
 

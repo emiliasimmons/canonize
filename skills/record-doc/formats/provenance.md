@@ -14,11 +14,11 @@ description: <one line: the value and how it was obtained>
 timestamp: <ISO 8601, stamped once at creation>
 tags: [<topic names and cross-cutting themes>]
 derived_from: [<root-anchored links to the finding, source, or DR the value rests on>]
-bears_on: <code site: path and symbol where the value lives>
+code_site: <path and symbol where the value lives in code>
 ---
 ```
 
-`derived_from` is the evidence beneath the value, the typed relation a trace and `audit-code` walk. `bears_on` names where the value lives in code, so `audit-code` can check the two against each other.
+`derived_from` is the evidence beneath the value, the typed relation a trace and `audit-code` walk. `code_site` names where the value lives in code, so `audit-code` can check the two against each other.
 
 **Body:**
 
