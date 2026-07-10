@@ -390,6 +390,7 @@ def compile_index(directory_pages: list[Page], heading: str) -> str:
 # --- link + frontmatter checking --------------------------------------------
 
 _MD_LINK_RE = re.compile(r"\[[^\]]*\]\(([^)\s]+)\)")
+_DECISION_STATUS_RE = re.compile(r"^(provisional|accepted|superseded by DR-\d{4,})$")
 
 
 def check_frontmatter(pages: list[Page], schema: Schema) -> list[str]:
@@ -407,6 +408,8 @@ def check_frontmatter(pages: list[Page], schema: Schema) -> list[str]:
         missing = [k for k in core if not p.fm.get(k)]
         if missing:
             problems.append(f"WARN  {p.relpath}: missing authored core {missing}")
+        if p.type == "decision" and p.status and not _DECISION_STATUS_RE.match(p.status):
+            problems.append(f"WARN  {p.relpath}: invalid decision status `{p.status}`")
     return problems
 
 
