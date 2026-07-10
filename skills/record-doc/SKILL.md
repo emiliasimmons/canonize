@@ -11,7 +11,7 @@ description: Records one conformant page into the project (a decision, finding, 
 
 3. **Compose.** Stamp the authored core (`type`, `title`, `description`) and a birth `timestamp` once, add the type-specific keys and typed relations the format doc names, and write every cross-link root-anchored (`/decisions/...`, `/findings/...`). Any tag not already in the schema's `## Tag vocabulary` is a mint: add it there with a one-line gloss in this same write — unilateral, but never invisible.
 
-4. **Write the page.** Then, for each hub the page joins (its home topic and every tag that names a topic), increment that hub's `staleness` frontmatter by one. Ingest increments and moves on.
+4. **Write the page.** Then, for each hub the page joins (its home topic and every tag that names a topic), increment that hub's `staleness` frontmatter by one.
 
 5. **Regenerate the affected blocks** with /canon compile — never hand-edit compiled content. Recompile the member block of each hub the page joined, the root taxonomy and state, and, on a decision write or supersession, the registers. Authored prose around the blocks is never touched.
 

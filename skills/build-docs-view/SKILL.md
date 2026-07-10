@@ -7,7 +7,7 @@ Views live under `docs/views/<name>/` and are always generated, never hand-edite
 
 ## Recipe 1 — knowledge graph
 
-`graph.py` in this skill's directory walks the corpus, resolves root-anchored links into edges, and groups nodes into compound clusters by topic — a page's home topic, or the topic its tags name, else its zone. Run it against the substrate root:
+`graph.py` in this skill's directory walks the corpus and renders the graph. Run it against the substrate root:
 
 ```
 python3 <build-docs-view-skill-path>/graph.py --root docs --out docs/views/graph/index.html
@@ -29,7 +29,7 @@ Record the settled design in a manifest at `docs/views/<name>/manifest.md` (form
 
 Then build the pipeline. A bespoke view is always a script — or a set of scripts — running extraction → data → visualization, and it must be re-runnable on its own, without an agent. Write the extractor(s) into `docs/views/<name>/`: they read the corpus (frontmatter, or values parsed out of bodies) and emit the data file the page renders.
 
-The one exception is when the extraction itself needs the agent — sentiment analysis, or any judgement an LLM has to make. Do not wire that through chat; recommend an agent SDK for that step, so the pipeline stays re-runnable outside a conversation.
+The one exception is when the extraction itself needs the agent — sentiment analysis, or any judgement an LLM has to make. Do not wire that through chat; recommend an agent SDK for that step.
 
 To change an existing view, load its manifest and scripts and change them directly.
 

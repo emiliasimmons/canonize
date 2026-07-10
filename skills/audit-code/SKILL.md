@@ -3,7 +3,7 @@ name: audit-code
 description: Check the model's code against its recorded reasoning and report the discrepancies. Use when the user wants to verify the code matches the project record, before a release or review, or when checking for drift between code and decisions or provenance. Read-only by default. Do NOT use to check whether the model fits the data — that is a finding, recorded with ingest-source.
 ---
 
-Walk the relation graph into the model's code. Read it, never run it. Detect discrepancies, present a report. Resolution is whatever the user says next.
+Walk the relation graph into the model's code. Read it, never run it. Resolution is whatever the user says next.
 
 ## Walk
 
@@ -20,7 +20,7 @@ If the memory is shared across repos, audit only this repo against the shared re
 **Each item carries a recommended direction,** one of two, and they resolve asymmetrically:
 
 - **Fix code** — the docs look authoritative; the code drifted. Resolution is approval of a diff. Code fixes are **never unilateral**, even trivial ones: the skill cannot tell drift from an unrecorded change of mind.
-- **Record decision** — the code looks deliberate; the docs are silent or stale. Approval alone cannot resolve it, because code shows *what* was decided, never *why*. Spend one or two inline questions to extract the rationale, then /record-doc files the DR (new or superseding). If the item is genuinely unresolved in the user's head, offer to run a /grilling session (using /canon) to settle it, or file it provisional so it lands in the open-decisions register rather than being lost.
+- **Record decision** — the code looks deliberate; the docs are silent or stale. Approval alone cannot resolve it, because code shows *what* was decided, never *why*. Spend one or two inline questions to extract the rationale, then /record-doc files the DR (new or superseding). If the item remains unresolved after discussion, offer to run a /grill-with-docs session to settle it, or file it provisional so it lands in the open-decisions register rather than being lost.
 
 ## Close
 

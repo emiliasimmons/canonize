@@ -3,13 +3,11 @@ name: ingest-source
 description: Bring sources and findings into the project — a paper or dataset you read, or the result of an analysis you ran. Owns placement (which topic, which tags). Use when the user has read something worth keeping, dropped in one or many sources, or wants an analysis result recorded, including a validation result. Delegates every write to record-doc.
 ---
 
-Read the taxonomy block, judge where a thing belongs, and hand the content and placement to /record-doc. Never touch views; views are pull-only.
-
 ## A source you read
 
 1. **Read the taxonomy block** at the top of `docs/index.md` (a few hundred tokens): the topics with their one-line descriptions and member counts, and the tag vocabulary.
 2. **Judge fit.** Pick the one primary topic the summary belongs under (its home directory) and the cross-cutting tags. The primary topic is always also a tag. When a source contributes meaningfully to a second topic, add that topic name as a secondary tag; the page will appear in both hubs but live in one directory. Drop the raw file into `sources/`; the summary is the knowledge object.
-3. **Cross-check** against what the project already holds. If the source conflicts with something assumed — an accepted decision, a calibrated value — say so plainly and name what it conflicts with. An unresolved conflict becomes a provisional DR via /record-doc, which the open-decisions register then picks up; do not resolve the conflict yourself.
+3. **Cross-check** against what the project already holds. If the source conflicts with something assumed — an accepted decision, a calibrated value — say so plainly and name what it conflicts with. An unresolved conflict becomes a provisional DR via /record-doc; do not resolve the conflict yourself.
 4. **When nothing fits,** say so. Explore just enough to confirm novelty, then propose a new topic — never place unilaterally, never force a bad fit. A new topic is a structural change: on approval, /record-doc scaffolds the hub and files the summary.
 5. **Write** the summary through /record-doc (type `source`).
 

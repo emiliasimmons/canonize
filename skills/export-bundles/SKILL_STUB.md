@@ -3,7 +3,7 @@ name: export-bundles
 description: Materialize a shareable standalone OKF bundle from a topic. Stub — out of scope for now; the design decisions are banked here but nothing is built. Use only when the user explicitly asks to export a bundle, and tell them it is not yet implemented.
 ---
 
-**Stub. Not implemented.** This skill records the banked design so it is not re-litigated; it builds nothing. If asked to export, say so and stop.
+**Stub. Not implemented.**
 
 ## Banked decisions
 
