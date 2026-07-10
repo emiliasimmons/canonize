@@ -427,6 +427,30 @@ def check_links(root: Path, pages: list[Page]) -> list[str]:
     return problems
 
 
+_RELATION_KEYS = ("derived_from", "bears_on", "supersedes")
+
+
+def check_frontmatter_links(root: Path, pages: list[Page]) -> list[str]:
+    """Validate root-anchored .md links in typed-relation frontmatter keys."""
+    problems = []
+    for p in pages:
+        for key in _RELATION_KEYS:
+            val = p.fm.get(key)
+            if not val:
+                continue
+            items = val if isinstance(val, list) else [val]
+            for item in items:
+                item = str(item)
+                if not item.endswith(".md"):
+                    continue
+                if item.startswith("/"):
+                    if not (root / item.lstrip("/")).exists():
+                        problems.append(f"BROKEN {p.relpath}: {key} -> {item}")
+                else:
+                    problems.append(f"RELATIVE {p.relpath}: {key} -> {item} (use a root-anchored /link)")
+    return problems
+
+
 # --- sequence ---------------------------------------------------------------
 
 _DR_RE = re.compile(r"DR-(\d+)")
@@ -537,6 +561,7 @@ def cmd_check(root: Path, do_fm: bool, do_links: bool) -> int:
         problems += check_frontmatter(pages, schema)
     if do_links:
         problems += check_links(root, pages)
+        problems += check_frontmatter_links(root, pages)
     if not problems:
         print(f"check: clean ({len(pages)} pages)")
         return 0
