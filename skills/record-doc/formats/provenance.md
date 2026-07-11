@@ -26,4 +26,4 @@ code_site: <path and symbol where the value lives in code>
 - how the value was obtained, one of: `measured` (literature reports it directly), `derived` (built from proxy evidence through an inference step), `calibrated` (fit to model output against targets), `assumed` (expert judgment, no data — flag loudly)
 - the basis, by root-anchored link
 
-Do not record a lifecycle stage by hand. The stage (prior, calibrated) is read off the evidence: sources only reads as a prior; a calibration finding existing reads as calibrated. There is no step that advances it.
+Additional sections are fine when the parameter's provenance warrants them. Do not record a lifecycle stage by hand. The stage (prior, calibrated) is read off the evidence: sources only reads as a prior; a calibration finding existing reads as calibrated. There is no step that advances it.

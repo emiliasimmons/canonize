@@ -41,4 +41,4 @@ derived_from: [<root-anchored links to the sources or findings it builds on>]
 <the 2-3 observations that bear on downstream decisions>
 ```
 
-Content level: enough to brief a colleague from the finding alone. For simple findings, Inputs and Key observations may be omitted if Result is self-contained. A finding is immutable unless you re-run it. A validation result — whether the model reproduces a real-world target — is a finding like any other.
+Content level: enough to brief a colleague from the finding alone. For simple findings, Inputs and Key observations may be omitted if Result is self-contained. Additional sections are fine when the analysis warrants them. A finding is immutable unless you re-run it. A validation result — whether the model reproduces a real-world target — is a finding like any other.

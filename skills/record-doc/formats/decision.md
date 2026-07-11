@@ -35,4 +35,4 @@ supersedes: <DR-NNNN, only when replacing an earlier decision>
 - why. For a provisional, why it was the parsimonious thing to unblock work, the open question it stands in for, and the trigger that should make you revisit it
 - a `# Citations` section if the decision rests on external sources
 
-A DR never points at code; code changes, decisions don't. Code pointers live in provenance pages.
+Additional sections are fine when the decision warrants them. A DR never points at code; code changes, decisions don't. Code pointers live in provenance pages.

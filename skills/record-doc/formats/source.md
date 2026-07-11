@@ -23,7 +23,7 @@ tags: [<cross-cutting themes beyond its home topic>]
 
 - **Summary** — what the source is, and where the raw file sits (`/sources/...`)
 - **Key points** — the points that matter to this project, in your own words. Paraphrase; do not paste long passages.
-- **Bears on** — the parameters, findings, or decisions it touches, by root-anchored link
-- **Conflicts** — any conflict with what the project already holds, stated plainly
+
+Add sections beyond these two when the source and project warrant it — methodology, data description, limitations, or whatever structure fits the material.
 
 A source summary is wiki: update it as understanding improves. The raw file does not change.

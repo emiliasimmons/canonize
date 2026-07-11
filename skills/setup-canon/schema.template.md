@@ -12,7 +12,7 @@ The project memory is rooted at `<root>/`. Storage is zone-first; navigation is 
 - tag_aging_days: 90
 - github_wiki_sync: none
 
-`canon` reads these bullets. `hub_staleness_nudge` is how many members a hub may accrue before the state block flags it stale; the aging thresholds bound how long a placeholder DR or an orphan tag may sit before `maintain-docs` surfaces it.
+`canon` reads these bullets. `hub_staleness_nudge` is how many members a hub may accrue before the state block flags it stale; the aging thresholds bound how long a placeholder DR or an orphan tag may sit before `fixup-docs` surfaces it.
 
 ## Structure
 

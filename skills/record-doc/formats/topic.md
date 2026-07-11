@@ -17,7 +17,7 @@ tags: [<cross-cutting themes the hub itself belongs to>]
 ---
 ```
 
-`description` is the line the root taxonomy block prints, so it earns its brevity. `staleness` counts members added since the synthesis was last rewritten; `record-doc` increments it on member addition, a synthesis rewrite (a `maintain-docs` curation) resets it to 0.
+`description` is the line the root taxonomy block prints, so it earns its brevity. `staleness` counts members added since the synthesis was last rewritten; `record-doc` increments it on member addition, a synthesis rewrite (a `curate-docs` curation) resets it to 0.
 
 **Body:** two parts.
 

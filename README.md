@@ -56,14 +56,15 @@ Every page is markdown with YAML frontmatter and a non-empty `type`. Readable wi
 
 ## The skills
 
-Seven core skills, two pull tools, and one script.
+Eight core skills, two pull tools, and one script.
 
 - **setup-canon** — bootstrap, adopt, or link a project; writes the schema, type registry, and root scaffold. Adopting is setup plus one batch ingest.
 - **ingest-source** — bring sources and findings in; owns placement (topic + tags); batch mode skims all before placing any. Delegates every write.
 - **query-docs** — answer questions and trace values live through the typed relations; read-only; offers to keep an expensive synthesis.
 - **record-doc** — the single writing primitive and the integration point; the only skill that writes pages.
 - **grill-with-docs** — the primary working interface: interrogate a plan until decisions settle, then route each through `record-doc`.
-- **maintain-docs** — a health pass: mechanical repairs unilaterally, structural curation by proposal and sign-off.
+- **fixup-docs** — mechanical repairs: broken links, frontmatter conformance, recompile, tag cleanup. Unilateral.
+- **curate-docs** — review the project's knowledge state: contradictions, stale claims, missing concepts, taxonomy issues, hub rewrites. Conversational.
 - **audit-code** — autonomous, read-only check of the model's code against the evidence trail; reports a discrepancy table with recommendations.
 - **build-docs-view** — pull-only: compile an interactive knowledge graph or a bespoke dashboard.
 - **export-bundles** — stub: materialize a shareable topic bundle (design banked, not built).
@@ -71,7 +72,7 @@ Seven core skills, two pull tools, and one script.
 
 ## Git is the log
 
-One commit per logical write with a structured message (`ingest: <title>`, `record: DR-0021 <title>`, `maintain: <what>`). There is no `log.md`.
+One commit per logical write with a structured message (`ingest: <title>`, `record: DR-0021 <title>`, `fixup: <what>`, `curate: <what>`)
 
 ## Linked repos
 

@@ -19,4 +19,4 @@ Compute traces **live** by walking the typed relations in frontmatter — `deriv
 
 For an old result, report the values as they were when it ran, and flag anywhere the provenance has since moved. Repeated queries recompute. Store a trace only on an explicit freeze — the stock-optional `trace` type, a date-stamped snapshot filed through /record-doc.
 
-Route stale-register requests to /maintain-docs.
+Route stale-register requests to /fixup-docs.
