@@ -12,7 +12,7 @@ The project memory is rooted at `<root>/`. Storage is zone-first; navigation is 
 - tag_aging_days: 90
 - github_wiki_sync: none
 
-`canon` reads these bullets. `hub_staleness_nudge` is how many members a hub may accrue before the state block flags it stale; the aging thresholds bound how long a placeholder DR or an orphan tag may sit before `fixup-docs` surfaces it.
+`canon` reads these bullets. `hub_staleness_nudge` is how many members a hub may accrue since its synthesis was last rewritten before the state block flags it stale; the aging thresholds bound how long a placeholder DR or an orphan tag may sit before `fixup-docs` surfaces it.
 
 ## Structure
 
@@ -32,7 +32,7 @@ The project memory is rooted at `<root>/`. Storage is zone-first; navigation is 
   schema.md                      this file
 ```
 
-Four zones, three postures: `sources/` immutable and human-managed; `findings/` and `decisions/` append-only (append, re-run, or supersede — never quietly rewrite); `topics/` mutable, built incrementally. Topics are coarse — target 8 to 15 for a 150-source project. A page has exactly one primary parent (its directory); everything cross-cutting is a tag.
+Four zones, three postures: `sources/` immutable and human-managed; `findings/` and `decisions/` append-only (append, re-run, or supersede — never quietly rewrite); `topics/` mutable, built incrementally. Topics are coarse — target 8 to 15 for a 150-source project. A topic-zone page has exactly one primary parent (its directory); evidence joins hubs by tag alone, and everything cross-cutting is a tag.
 
 ## Frontmatter
 

@@ -1,6 +1,6 @@
 # Concept format
 
-A concept is a synthesis worth keeping — an answer you would hate to re-derive in six months. `query-docs` offers to file one when an answer is expensive; the wiki stays made of things worth keeping.
+A concept is a synthesis worth keeping — an answer you would hate to re-derive in six months. `query-docs` offers to file one when an answer is expensive.
 
 File: `topics/<topic>/<short-name>.md`, type `concept`.
 

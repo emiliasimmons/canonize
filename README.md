@@ -56,14 +56,14 @@ Every page is markdown with YAML frontmatter and a non-empty `type`. Readable wi
 
 ## The skills
 
-Ten core skills, two pull tools, and one script.
+Nine core skills, one shared primitive, two pull tools, and one script.
 
 - **setup-canon** — bootstrap, adopt, or link a project; writes the schema, type registry, and root scaffold. Adopting is setup plus one batch ingest.
 - **ingest-source** — bring sources and findings in; owns placement (topic + tags); batch mode skims all before placing any. Delegates every write.
 - **query-docs** — answer questions and trace values live through the typed relations; read-only; offers to keep an expensive synthesis.
 - **record-doc** — the single writing primitive and the integration point; the only skill that writes pages.
 - **grill-with-docs** — the primary working interface: interrogate a plan until decisions settle, then route each through `record-doc`.
-- **grilling** — standalone interrogation: stress-test a plan or design without routing decisions into docs.
+- **grilling** — the generic interview primitive: one question at a time, each with a recommended answer; grill-with-docs and other skills wrap it.
 - **fixup-docs** — mechanical repairs: broken links, frontmatter conformance, recompile, tag cleanup. Unilateral.
 - **curate-docs** — review the project's knowledge state: contradictions, stale claims, missing concepts, taxonomy issues, hub rewrites. Conversational.
 - **audit-code** — autonomous, read-only check of the model's code against the evidence trail; reports a discrepancy table with recommendations.

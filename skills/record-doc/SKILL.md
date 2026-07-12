@@ -3,6 +3,8 @@ name: record-doc
 description: Records one conformant page into the project (a decision, finding, source, concept, or any registered type) and regenerates the surfaces that depend on it. Use when the user says "record-doc", wants a decision/finding/source/note filed, or when another skill needs to write a page.
 ---
 
+Orient with /canon.
+
 ## Steps
 
 1. **Resolve the type.** Read the type registry in `schema.md`. The type must already be registered — record-doc never mints one. If the type is unregistered, stop and say so, and suggest a tag if the content is only "kind of its own thing." Load **only** that type's format doc (recording a finding never pays the token cost of the decision format).
@@ -15,7 +17,7 @@ description: Records one conformant page into the project (a decision, finding, 
 
 5. **Regenerate the affected blocks** with /canon compile — never hand-edit compiled content. Recompile the member block of each hub the page joined, the root taxonomy and state, and, on a decision write or supersession, the registers. Authored prose around the blocks is never touched.
 
-6. **Commit** the one logical write with a structured message: `record: DR-0021 <title>`, `ingest: <title>`, `maintain: <what>`.
+6. **Commit** the one logical write with a structured message: `record: DR-0021 <title>`, `ingest: <title>`, `curate: <what>`.
 
 ## Two calling positions
 
@@ -25,3 +27,5 @@ description: Records one conformant page into the project (a decision, finding, 
 ## Mutability
 
 Prefer append and supersede. A deliberate rewrite is legitimate when the commit logs it and any surface reading the page is recompiled afterward.
+
+A hub synthesis rewrite additionally resets that hub's `staleness` to 0 and recompiles the root taxonomy and state blocks in the same commit.

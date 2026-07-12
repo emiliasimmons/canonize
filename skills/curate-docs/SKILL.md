@@ -16,8 +16,6 @@ Do a full sweep of the project and present findings grouped by category:
 - **Hub rewrites** — hubs past the staleness threshold whose synthesis no longer reflects their members.
 - **Data gaps** — questions the project's evidence doesn't answer but could with a targeted source or analysis.
 
-When the sweep was done by a subagent, recommend /query-docs for missing concepts rather than writing them directly.
-
 ## Working through findings
 
 Present the grouped list to the user. Ask which category to address first.

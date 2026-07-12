@@ -50,7 +50,7 @@ When a term is vague or overloaded, propose a precise canonical form before it e
 
 On resolution, edit `glossary.md` directly. One or two sentences defining what the term IS in this project. Write the entry when it settles, don't batch.
 
-## When to Recommend Recording a Decision
+## When to recommend recording a decision
 
 Never record a decision autonomously. When a choice meets any of the criteria below, pause and recommend recording it, then wait for the user's go-ahead.
 
