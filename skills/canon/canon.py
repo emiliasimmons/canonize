@@ -91,9 +91,11 @@ def parse_frontmatter(text: str) -> tuple[dict, str, bool]:
 
 # --- corpus model -----------------------------------------------------------
 
-RESERVED = {"index.md", "log.md"}
+RESERVED = {"index.md", "log.md", "README.md"}
 # canonize config, parsed separately by load_schema; never a knowledge page
 CONFIG = {"schema.md"}
+# raw-file directories; not knowledge pages
+RAW_DIRS = {"sources"}
 
 
 @dataclass
@@ -155,6 +157,9 @@ class Schema:
 def _iter_md(root: Path):
     for p in sorted(root.rglob("*.md")):
         if p.name in RESERVED or p.name in CONFIG:
+            continue
+        rel = p.relative_to(root)
+        if rel.parts and rel.parts[0] in RAW_DIRS:
             continue
         yield p
 
