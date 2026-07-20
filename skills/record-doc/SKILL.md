@@ -17,7 +17,7 @@ Orient with /canon.
 
 5. **Regenerate the affected blocks** with /canon compile — never hand-edit compiled content. Recompile the member block of each hub the page joined, the root taxonomy and state, and, on a decision write or supersession, the registers. Authored prose around the blocks is never touched.
 
-6. **Commit** the one logical write with a structured message: `record: DR-0021 <title>`, `ingest: <title>`, `curate: <what>`.
+6. **Commit** per the `## docs` steering block: commit each write with a structured message (`record: DR-0021 <title>`, `ingest: <title>`, `curate: <what>`), or stage for review. Default to commit when no steering block exists.
 
 ## Two calling positions
 

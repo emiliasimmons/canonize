@@ -3,7 +3,9 @@ name: handoff
 description: Compact the current conversation into a handoff document for another agent to pick up. Use when the user wants to branch off and work on something separately, hand work to a fresh session, bring findings back to an earlier session, or mentions "handoff".
 ---
 
-Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to the temporary directory of the user's OS - not the current workspace.
+Write a handoff document summarising the current conversation so a fresh agent can continue the work.
+
+Save location: check the `## docs` steering block for a `Handoffs` setting. `local` means write to the current workspace; `temp dir` means the OS temporary directory. Default to temp dir when no steering block exists.
 
 Include a "suggested skills" section in the document, which suggests skills that the agent should invoke.
 

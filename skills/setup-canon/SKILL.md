@@ -12,9 +12,10 @@ Three modes: **new project**, **adopt**, **linked**.
 
 Explore first. Look before asking: existing agent instructions file, git remote, any `docs/` directory. Present what you found, then ask only what you could not work out, one question at a time:
 
-- Where the memory lives: the model's repo, its own repo, or a submodule (sets `substrate_root`).
-- Check-in cadence: confirm each write, or batch and show periodically.
+- Where in this repo the memory lives (sets `substrate_root`, default `docs`).
 - Whether to enable GitHub wiki sync, if the repo has a GitHub remote (optional).
+- Commits: commit each write automatically, or stage for review.
+- Handoffs: save to a local directory or the OS temp dir. If local, whether to gitignore handoff files.
 
 Use `schema.template.md` defaults for everything else and say they are editable.
 
@@ -22,10 +23,16 @@ Scaffold the tree up front:
 
 - directories: `docs/sources/`, `docs/findings/`, `docs/decisions/`, `docs/topics/`, `docs/views/`
 - `docs/index.md`: `okf_version: "0.1"` frontmatter (its only frontmatter), a short authored preamble written like a wiki landing page, then the two compiled markers `<!-- compiled:taxonomy -->…<!-- /compiled:taxonomy -->` and `<!-- compiled:state -->…<!-- /compiled:state -->`, then links to the registers and glossary
-- `docs/glossary.md`, `docs/assumptions.md`, `docs/open-decisions.md` — the registers scaffolded with a `<!-- compiled:register -->` block each (formats in `record-doc/`)
+- `docs/assumptions.md`, `docs/open-decisions.md` — registers scaffolded with a `<!-- compiled:register -->` block each (format: `record-doc/formats/register.md`)
+- `docs/glossary.md` — scaffolded per `record-doc/formats/glossary.md`
 - `docs/schema.md` from the template, with the chosen values filled and an empty `## Tag vocabulary` table
 
-Offer the **stock-optional** types (`provenance`, `trace`); for each the user accepts, copy its row from the template's stock-optionals table into the live `## Type registry`. Custom types are not minted here unless asked — that is a brief /grilling session on what the type captures, then a registry row plus a format doc from the template, with sign-off.
+Offer the **stock-optional** types and explain what each is:
+
+- `provenance` — records why a parameter has its value: the justification kind (measured, derived, calibrated, assumed), the evidence it rests on, and the code site where the value lives. `audit-code` walks these to check code against docs.
+- `trace` — a frozen snapshot of a value's evidence trail end to end. Live traces are ephemeral `query-docs` output; this type stores one permanently when the snapshot itself is the artifact worth keeping.
+
+For each the user accepts, copy its row from the template's stock-optionals table into the live `## Type registry`. Custom types are not minted here unless asked — that is a brief /grilling session on what the type captures, then a registry row plus a format doc from the template, with sign-off.
 
 Finish: run /canon compile to populate the empty spine, /canon check to confirm conformance, write the steering block, and commit `setup: scaffold canon project`.
 
@@ -33,7 +40,9 @@ If the project already has sources, code, or undocumented decisions, go to adopt
 
 ## Adopt
 
-Adoption is setup plus one batch ingest. Run the new-project scaffold first, then hand the existing sources to /ingest-source in batch mode. That first batch doubles as initial taxonomy construction: with no topics yet, the placement plan's clusters *are* the proposed topic set. The user approves the taxonomy and placements once, and it executes. Undocumented decisions surfaced while reading are proposed as DRs through /record-doc.
+Adoption is setup plus one batch ingest. Run the new-project scaffold first. If `sources/` is empty, prompt the user to add materials (academic article PDFs, a BibTeX bibliography export, datasets, etc.) and let you know when they are ready before proceeding.
+
+Then hand the existing sources to /ingest-source in batch mode. That first batch doubles as initial taxonomy construction: with no topics yet, the placement plan's clusters *are* the proposed topic set. The user approves the taxonomy and placements once, and it executes. Undocumented decisions surfaced while reading are proposed as DRs through /record-doc.
 
 ## Linked
 
@@ -58,4 +67,4 @@ Do not scaffold zones or write a new schema — the upstream owns them.
 
 ## Tuning (any mode)
 
-Take the complaint in plain words, map it to its setting (check-in cadence and grilling live in the steering block; thresholds and types live in `schema.md`), change it, and say what changed.
+Take the complaint in plain words, map it to its setting (commit and handoff behavior live in the steering block; thresholds and types live in `schema.md`; skill behavior lives in the skill file), change it, and say what changed.
