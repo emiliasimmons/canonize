@@ -37,3 +37,8 @@ Write it through /record-doc (type `finding`): the question, the method as a poi
 ## Staleness
 
 Past the schema's nudge threshold you may say so once — one line — but never offer to rewrite a synthesis. Rewrites are /curate-docs curation the user schedules.
+
+## Source types
+
+**pdf**: read `pdf_extraction.md`
+**bib**: read `bibtex_source.md` (for bibtex sources generated with Zotero or Mendeley)
