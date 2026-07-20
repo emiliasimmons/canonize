@@ -25,7 +25,7 @@ Write the D3/Leaflet/etc. page each time. Run a /grilling session until these se
 - **the storage target** (`store`) — pages / csv / json / inline table / …
 - **the output** — the file(s)
 
-Record the settled design in a manifest at `docs/views/<name>/manifest.md` (format: `manifest.md`); the manifest's Codebook is the only extraction instruction.
+Record the settled design in a manifest at `docs/views/<name>/manifest.md` (format: `manifest-format.md` in this skill's directory); the manifest's Codebook is the only extraction instruction.
 
 Then build the pipeline. A bespoke view is always a script — or a set of scripts — running extraction → data → visualization, and it must be re-runnable on its own, without an agent. Write the extractor(s) into `docs/views/<name>/`: they read the corpus (frontmatter, or values parsed out of bodies) and emit the data file the page renders.
 
