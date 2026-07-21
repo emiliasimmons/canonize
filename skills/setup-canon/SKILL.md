@@ -40,9 +40,27 @@ If the project already has sources, code, or undocumented decisions, go to adopt
 
 ## Adopt
 
-Adoption is setup plus one batch ingest. Run the new-project scaffold first. If `sources/` is empty, prompt the user to add materials (academic article PDFs, a BibTeX bibliography export, datasets, etc.) and let you know when they are ready before proceeding to loading /ingest-source.
+The new-project scaffold followed by a structured ingest and (when code exists) a decision extraction. All commits follow the preference set during scaffold (auto or confirm).
 
-Then hand the existing sources to /ingest-source. That first batch doubles as initial taxonomy construction: with no topics yet, the placement plan's clusters *are* the proposed topic set. The user approves the taxonomy and placements once, and it executes. Undocumented decisions surfaced while reading are proposed as DRs through /record-doc.
+1. **Scaffold.** Run the new-project flow above.
+2. **Commit** `setup: scaffold canon project`.
+3. **Gather materials.** If `sources/` is empty, prompt the user to add materials (academic article PDFs, a BibTeX bibliography export, datasets, code pointers) and wait.
+4. **Preprocess.** Run gated preprocessing on all sources per /ingest-source (PDF extraction, BibTeX parsing). Everything downstream works from the extracted content.
+5. **Propose taxonomy.** With no topics yet, scan extracted content and cluster by subject. The placement plan's clusters *are* the proposed topic set. Present each proposed topic with the sources that would land in it. Get approval before proceeding.
+6. **Commit** taxonomy and extracted materials.
+7. **Ingest.** Ask the user's preference: one-by-one in chat, subagent dispatch across topic areas, or silent draft with review at the end. Suggest based on the number and type mix of sources. If the session is long or taxonomy negotiation was involved, offer a /handoff before starting; it captures the approved taxonomy, commit preference, and the source list with proposed placements.
+8. **Commit** ingestion.
+9. **Scan code** (skip if the project has no code). Read the codebase for unrecorded decisions and findings: hardcoded values, structural choices, algorithm selections, boundary conditions, calibration outputs, validation results. Output a table:
+
+   | # | Type | Item | Location | Confidence | Why it matters |
+   |---|------|------|----------|------------|----------------|
+
+   Type is any registered type from the project's schema (commonly `decision`, `finding`, `provenance` if enabled). Suggest the best-fit type per item. Confidence is one of: `clear` (obviously deliberate), `likely` (probably intentional but alternatives exist), `unclear` (could be accidental or a default). After the table, suggest any tags the code reveals that the taxonomy doesn't yet cover. Flag conflicts between code behavior and just-ingested sources separately.
+
+   If ingestion was substantial, offer a /handoff before this step. If 3+ items are `unclear` or have plausible competing alternatives, suggest a /grilling session to settle them.
+10. **Triage.** The user approves, merges, defers, or drops items from the table. Deferred items land in open-decisions.
+11. **Record** approved items through /record-doc, each under its type. **Commit.**
+12. **Curate** (optional). Offer a /curate-docs pass focused on missing concepts: sources and code-extracted items are now side by side for the first time, but the concept layer connecting them is empty. Curate-docs will propose concepts that bridge code decisions to literature, shared abstractions across sources, and terms the project uses without defining. Skip if the corpus is small (under ~5 pages) and no cross-cutting themes emerged. This is the tail of a long flow; offer a /handoff rather than running curation inline if the session warrants it.
 
 ## Linked
 
