@@ -72,7 +72,7 @@ Format paths are relative to the canonize skills directory.
 
 ## Tag vocabulary
 
-Tags mark cross-cutting themes with 3+ expected members, not keywords. Using an existing tag is free; minting one is unilateral but registered here in the same write, with a gloss. The taxonomy block prints member counts, so a one-member tag is visibly weak. A topic name doubles as the tag that binds evidence to its hub.
+Tags mark cross-cutting themes with 3+ expected members, not keywords. Tags are atomic, composable concepts: `antibiotic`, `resistance`, `modeling` — not `antibiotic-resistance-modeling`. Prefer several narrow tags whose intersection captures the idea over one compound tag that can't recombine. Using an existing tag is free; minting one is unilateral but registered here in the same write, with a gloss. The taxonomy block prints member counts, so a one-member tag is visibly weak. A topic name doubles as the tag that binds evidence to its hub.
 
 | tag | gloss |
 |-----|-------|
