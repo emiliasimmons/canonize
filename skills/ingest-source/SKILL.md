@@ -10,6 +10,7 @@ Orient with /canon.
 Some filetypes are gated: never read the raw file. Check every source's extension against this table before reading; on a match, read the named doc and follow its preprocessing, then work from the extracted content:
 
 **.pdf**: `gated/pdf.md`
+**.docx**: `gated/docx.md`
 **.bib**: `gated/bibtex.md` (Zotero/Mendeley exports)
 
 ## A source you read
