@@ -57,7 +57,7 @@ Adding a type is a registry row plus a format doc, nothing else. The `surfaces` 
 | `concept` | topics | mutable | record-doc/formats/concept.md | hub, taxonomy |
 | `topic` | topics | mutable | record-doc/formats/topic.md | |
 | `register` | | mutable | record-doc/formats/register.md | |
-| `glossary` | | mutable | record-doc/formats/glossary.md | |
+| `glossary` | | mutable | canon/glossary_format.md | |
 
 Format paths are relative to the canonize skills directory.
 

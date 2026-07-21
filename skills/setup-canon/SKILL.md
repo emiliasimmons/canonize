@@ -4,7 +4,7 @@ description: Bootstrap a canon project, adopt an existing one, link a repo to a 
 disable-model-invocation: true
 ---
 
-Writes `schema.md`, the root orientation page, the directory scaffold, and the `## docs` steering block. Start from `schema.template.md` and `steering.template.md` in this skill's directory, and load /canon for the layout and the script.
+Writes `schema.md`, the root orientation page, the directory scaffold, and the `## docs` steering block. Start from `schema.template.md` and `steering.template.md` in this skill's directory, and load /canon for the layout and the script. Load /record-doc for the register and other format specs.
 
 Three modes: **new project**, **adopt**, **linked**.
 
@@ -24,7 +24,7 @@ Scaffold the tree up front:
 - directories: `docs/sources/`, `docs/findings/`, `docs/decisions/`, `docs/topics/`, `docs/views/`
 - `docs/index.md`: `okf_version: "0.1"` frontmatter (its only frontmatter), a short authored preamble written like a wiki landing page, then the two compiled markers `<!-- compiled:taxonomy -->…<!-- /compiled:taxonomy -->` and `<!-- compiled:state -->…<!-- /compiled:state -->`, then links to the registers and glossary
 - `docs/assumptions.md`, `docs/open-decisions.md` — registers scaffolded with a `<!-- compiled:register -->` block each (format: `record-doc/formats/register.md`)
-- `docs/glossary.md` — scaffolded per `record-doc/formats/glossary.md`
+- `docs/glossary.md` — scaffolded per `canon/glossary_format.md`
 - `docs/schema.md` from the template, with the chosen values filled and an empty `## Tag vocabulary` table
 
 Offer the **stock-optional** types and explain what each is:
@@ -40,9 +40,9 @@ If the project already has sources, code, or undocumented decisions, go to adopt
 
 ## Adopt
 
-Adoption is setup plus one batch ingest. Run the new-project scaffold first. If `sources/` is empty, prompt the user to add materials (academic article PDFs, a BibTeX bibliography export, datasets, etc.) and let you know when they are ready before proceeding.
+Adoption is setup plus one batch ingest. Run the new-project scaffold first. If `sources/` is empty, prompt the user to add materials (academic article PDFs, a BibTeX bibliography export, datasets, etc.) and let you know when they are ready before proceeding to loading /ingest-source.
 
-Then hand the existing sources to /ingest-source in batch mode. That first batch doubles as initial taxonomy construction: with no topics yet, the placement plan's clusters *are* the proposed topic set. The user approves the taxonomy and placements once, and it executes. Undocumented decisions surfaced while reading are proposed as DRs through /record-doc.
+Then hand the existing sources to /ingest-source. That first batch doubles as initial taxonomy construction: with no topics yet, the placement plan's clusters *are* the proposed topic set. The user approves the taxonomy and placements once, and it executes. Undocumented decisions surfaced while reading are proposed as DRs through /record-doc.
 
 ## Linked
 
